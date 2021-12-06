@@ -12,4 +12,11 @@ export class NomineeService {
   getNominees() {
     return this.fs.collection('nominees').valueChanges();
   }
+  createVote(data: any) {
+    return new Promise<any>((resolve, reject) => {
+      this.fs.collection("nominees")
+        .add(data)
+        .then(res => {}, err => reject(err));
+    });
+  }
 }
