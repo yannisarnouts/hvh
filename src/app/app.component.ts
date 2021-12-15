@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   email: string = "";
   phone: string = "";
   motivation: string = "";
+  showSuccess = false; showError = false;
 
 
   constructor(private nomineeService: NomineeService, public dialog: MatDialog) {
@@ -41,9 +42,16 @@ export class AppComponent implements OnInit {
       data: {firstname: this.firstname, lastname: this.lastname, company: this.company, email: this.email, phone: this.phone, motivation: this.motivation },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result !== undefined) {
-        this.nomineeService.createVote(result);
+        this.nomineeService.getNominee(result.email).subscribe(res => {
+          if (res === undefined) {
+            this.nomineeService.createVote(result);
+            this.showSuccess = true;
+            return;
+          } else {
+            this.showError = true;
+          }
+        });
       }
     });
   }
@@ -62,7 +70,7 @@ export class NominateDialog {
 
   disableForm() {
     if (this.data.firstname.length > 1 && this.data.lastname.length > 1 && this.data.company.length > 1 && this.data.email.length > 1 && this.data.phone.length > 1 && this.data.motivation.length > 1) {
-      if (!this.data.email.match(/^[a-z]+@[a-z]+\.[a-z]+$/g) || this.data.email.length < 6) {
+      if (!this.data.email.match(/^\w+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.email.length < 6) {
         this.errorMessage = "E-mail adres is niet geldig";
         this.showError = true;
         return true;

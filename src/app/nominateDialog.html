@@ -27,7 +27,7 @@
     <label for="motivation">Motivatie</label>
     <textarea class="form-control" [(ngModel)]="data.motivation" id="motivation" placeholder="Motivatie" required></textarea>
   </div>
-  <div id="errMsg" class="alert alert-danger" *ngIf="showError">{{errorMessage}}</div>
+  <div id="errMsg" class="alert alert-danger mt-3" *ngIf="showError">{{errorMessage}}</div>
     <button type="submit" [mat-dialog-close]="data" class="btn btn-primary mt-4" [disabled]="disableForm()">Nomineer jouw held</button>
   <!--</form>-->
 </div>

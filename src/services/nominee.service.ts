@@ -9,13 +9,14 @@ export class NomineeService {
   constructor(private fs: AngularFirestore) {
   }
 
-  getNominees() {
-    return this.fs.collection('nominees').valueChanges();
+  getNominee(email: string) {
+  // , ref => ref.where('email', '==', email)
+    return this.fs.collection('nominees').doc(email).valueChanges();
   }
   createVote(data: any) {
     return new Promise<any>((resolve, reject) => {
-      this.fs.collection("nominees")
-        .add(data)
+      this.fs.collection("nominees").doc(data.email)
+        .set(data)
         .then(res => {}, err => reject(err));
     });
   }
