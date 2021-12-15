@@ -42,7 +42,9 @@ export class AppComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.nomineeService.createVote(result);
+      if (result !== undefined) {
+        this.nomineeService.createVote(result);
+      }
     });
   }
 }
@@ -51,15 +53,29 @@ export class AppComponent implements OnInit {
   templateUrl: 'nominateDialog.html',
 })
 export class NominateDialog {
+  errorMessage = '';
+  showError = false;
   constructor(
     public dialogRef: MatDialogRef<NominateDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
-  validateForm() {
+  disableForm() {
     if (this.data.firstname.length > 1 && this.data.lastname.length > 1 && this.data.company.length > 1 && this.data.email.length > 1 && this.data.phone.length > 1 && this.data.motivation.length > 1) {
-      return false;
+      if (!this.data.email.match(/^[a-z]+@[a-z]+\.[a-z]+$/g) || this.data.email.length < 6) {
+        this.errorMessage = "E-mail adres is niet geldig";
+        this.showError = true;
+        return true;
+      } else if (!this.data.phone.match(/^\+?[0-9]+$/g) || this.data.phone.length < 7 || this.data.phone.length > 16) {
+        this.errorMessage = "Telefoonnummer is niet geldig";
+        this.showError = true;
+        return true;
+      } else {
+        this.showError = false;
+        return false;
+      }
     }  else {
+      this.showError = false;
       return true;
     }
   }
