@@ -37,12 +37,19 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 56px;
   color: #3e4450;
 }
+#content h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #3e4450;
+}
 #hero h2 {
   color: #858ea1;
   margin: 10px 0 30px 0;
   font-size: 24px;
 }
-#hero .btn-get-started {
+.btn-get-started {
   font-weight: 600;
   color: #3a3a3a;
   display: inline-block;
