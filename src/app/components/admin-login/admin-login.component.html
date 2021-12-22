@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div>
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="text" class="form-control" [(ngModel)]="email" id="email" placeholder="email">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" [(ngModel)]="password" id="pwd" placeholder="password">
+        </div>
+        <button (click)="signIn()" class="btn btn-default" style="margin-left:5px;">Login</button>
+
+      </div>
+      <!--<button (click)="signOut()" class="btn btn-primary" *ngIf="authenticationService.userData | async">Logout</button>-->
+    </div>
+  </div>
+</div>
