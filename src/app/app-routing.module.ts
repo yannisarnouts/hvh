@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AdminLoginComponent} from "./components/admin-login/admin-login.component";
+import {AdminLoginComponent} from "./components/admin/admin-login/admin-login.component";
 import {AppComponent} from "./app.component";
 import {HomeComponent} from "./components/home/home.component";
+import {SubmitArticlesComponent} from "./components/admin/submit-articles/submit-articles.component";
 
 const routes: Routes = [
   {path: 'aLogin', component: AdminLoginComponent},
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'admin/submitArticles', component: SubmitArticlesComponent}
 ];
 
 @NgModule({

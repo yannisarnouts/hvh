@@ -9,16 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {HomeComponent, NominateDialog} from './components/home/home.component';
+import { SubmitArticlesComponent } from './components/admin/submit-articles/submit-articles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NominateDialog,
     AdminLoginComponent,
-    HomeComponent
+    HomeComponent,
+    SubmitArticlesComponent
   ],
   imports: [
     BrowserModule,

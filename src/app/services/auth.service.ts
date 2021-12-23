@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
-import {getAuth, signInWithEmailAndPassword, signOut} from '@angular/fire/auth';
+import {AngularFireAuth} from "@angular/fire/compat/auth";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+  constructor(private afAuth: AngularFireAuth) {
   }
 
   SignIn(mail: string, pass: string) {
-    signInWithEmailAndPassword(getAuth(), mail, pass).then(userCrendential => {
+    this.afAuth.signInWithEmailAndPassword(mail, pass).then(userCrendential => {
       const u = userCrendential.user;
+      console.log(u);
     }).catch(err => {
       const errorCode = err.code;
       const errorMessage = err.message;
@@ -19,12 +20,15 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return getAuth().currentUser != null;
+    return this.afAuth.currentUser != null;
+  }
+
+  getCurrentUser() {
+    return this.afAuth.currentUser;
   }
 
   SignOut() {
-    const auth = getAuth();
-    signOut(auth).then(() => {
+    this.afAuth.signOut().then(() => {
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.

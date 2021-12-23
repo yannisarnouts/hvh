@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {NomineeService} from "../../../services/nominee.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {AuthService} from "../../services/auth.service";
 
 export interface DialogData {
   firstname: string;
@@ -29,7 +30,6 @@ export class HomeComponent implements OnInit {
   constructor(private nomineeService: NomineeService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-
   }
 
   openDialog(): void {
