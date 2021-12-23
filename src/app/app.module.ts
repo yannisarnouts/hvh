@@ -13,6 +13,7 @@ import { AdminLoginComponent } from './components/admin/admin-login/admin-login.
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {HomeComponent, NominateDialog} from './components/home/home.component';
 import { SubmitArticlesComponent } from './components/admin/submit-articles/submit-articles.component';
+import { PressComponent } from './components/press/press.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SubmitArticlesComponent } from './components/admin/submit-articles/subm
     NominateDialog,
     AdminLoginComponent,
     HomeComponent,
-    SubmitArticlesComponent
+    SubmitArticlesComponent,
+    PressComponent
   ],
   imports: [
     BrowserModule,

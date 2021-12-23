@@ -9,11 +9,11 @@ export class ArticleService {
 
   constructor(private fs: AngularFirestore) {}
 
-  createArticle(article: Article) {
-    console.log(article);
-    return new Promise<any>((resolve, reject) => {
-      this.fs.collection("articles").add(article)
-        .then(res => {}, err => reject(err));
-    });
+  createArticle(article: Article): any {
+    return this.fs.collection("articles").add(article);
+  }
+
+  getArticles() {
+    return this.fs.collection("articles").get();
   }
 }

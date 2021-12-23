@@ -7,6 +7,7 @@ export interface Article {
   name: string;
   link: string;
   date: string;
+  source: string;
 }
 
 @Component({
@@ -15,14 +16,18 @@ export interface Article {
   styleUrls: ['./submit-articles.component.css']
 })
 export class SubmitArticlesComponent implements OnInit {
-  article: Article = {name: '', link: '', date: ''};
+  article: Article = {name: '', link: '', source: '', date: ''};
+  submitted = false;
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
   }
 
   createArticle() {
-    this.articleService.createArticle(this.article);
+    this.articleService.createArticle(this.article).then(() => {
+      console.log("Artikel is toegevoegd");
+      this.submitted = true;
+    });
   }
 
 }

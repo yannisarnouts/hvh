@@ -4,11 +4,13 @@ import {AdminLoginComponent} from "./components/admin/admin-login/admin-login.co
 import {AppComponent} from "./app.component";
 import {HomeComponent} from "./components/home/home.component";
 import {SubmitArticlesComponent} from "./components/admin/submit-articles/submit-articles.component";
+import {PressComponent} from "./components/press/press.component";
 
 const routes: Routes = [
   {path: 'aLogin', component: AdminLoginComponent},
   {path: '', component: HomeComponent},
-  {path: 'admin/submitArticles', component: SubmitArticlesComponent}
+  {path: 'articles', component: PressComponent},
+  {path: 'admin/submitArticles', component: SubmitArticlesComponent},
 ];
 
 @NgModule({
