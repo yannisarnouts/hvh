@@ -11,12 +11,18 @@
                    data-w="8">
                 <div class="cell-wrapper layout-widget-wrapper">
 
-                  <h2>2021</h2>
-                  <h4><strong>October</strong></h4>
-                  <p *ngFor="let article of articles">
-                    <a href="{{article.link}}">{{article.name}}</a> - {{article.source}}
-                  </p>
-
+                  <h2 *ngFor="let y of yearList">
+                    <span *ngIf="y.nr > 0">{{y.year}}
+                      <h4 *ngFor="let m of monthList">
+                    <strong *ngIf="m.nr > 0">{{m.month}}</strong>
+                    <p *ngFor="let article of articles">
+                      <span
+                        *ngIf="article.date.toString().includes(m.code) && article.date.toString().includes(y.year)"><a
+                        href="{{article.link}}">{{article.name}}</a> - {{article.source}}</span>
+                    </p>
+                  </h4>
+                      </span>
+                  </h2>
                 </div>
                 <!--end layout-widget-wrapper -->
               </div>

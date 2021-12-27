@@ -26,7 +26,7 @@ export class LoginActivate implements CanActivate {
 const routes: Routes = [
   {path: 'aLogin', component: AdminLoginComponent},
   {path: '', component: HomeComponent},
-  {path: 'articles', component: PressComponent},
+  {path: 'press', component: PressComponent},
   {path: 'admin/submitArticles', component: SubmitArticlesComponent, canActivate: [LoginActivate]},
   {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]}
 ];
