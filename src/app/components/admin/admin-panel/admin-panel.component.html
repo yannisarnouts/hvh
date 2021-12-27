@@ -1,1 +1,17 @@
-<p>admin-panel works!</p>
+<div class="container mt-3">
+  <button (click)="logout()" class="btn btn-warning w-10 float-end">Log uit</button> <br/><br/><br/>
+  <h1 class="d-flex justify-content-center">Welkom op het admin panel.</h1>
+  <p class="d-flex justify-content-center">Hier kunt u navigeren door de verschillende admin functies.</p>
+  <div class="row mt-5">
+    <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+      <h1 style="font-weight: bold" class="d-flex justify-content-center">Uploaden van nieuwsartikels</h1>
+      <div class="d-flex justify-content-center">
+        <a href="admin/submitArticles" class="btn btn-secondary" mat-raised-button>Upload nieuwsartikels</a>
+      </div>
+    </div>
+    <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+      <h1 style="font-weight: bold">TODO</h1>
+      <p>TODO</p>
+    </div>
+  </div>
+</div>
