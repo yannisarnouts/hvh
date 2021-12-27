@@ -1,6 +1,4 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {DialogData, NominateDialog} from "../../home/home.component";
 import {ArticleService} from "../../../services/article.service";
 
 export interface Article {

@@ -10,8 +10,11 @@
           <label for="pwd">Password:</label>
           <input type="password" class="form-control" [(ngModel)]="password" id="pwd" placeholder="password">
         </div>
-        <button (click)="signIn()" class="btn btn-default" style="margin-left:5px;">Login</button>
+        <button (click)="signIn()" class="btn btn-primary mt-4">Login</button>
       </div>
     </div>
+  </div>
+  <div id="errMsg" class="alert alert-danger mt-3 col-md-6" *ngIf="errorMessage">
+    Er is wat mis gegaan, u kan niet inloggen.
   </div>
 </div>

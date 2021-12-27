@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule, LoginActivate} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {environment} from "../environments/environment.prod";
 import {AngularFireModule} from "@angular/fire/compat";
@@ -14,6 +14,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {HomeComponent, NominateDialog} from './components/home/home.component';
 import { SubmitArticlesComponent } from './components/admin/submit-articles/submit-articles.component';
 import { PressComponent } from './components/press/press.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PressComponent } from './components/press/press.component';
     AdminLoginComponent,
     HomeComponent,
     SubmitArticlesComponent,
-    PressComponent
+    PressComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { PressComponent } from './components/press/press.component';
     FormsModule,
     ReactiveFormsModule,
 ],
-  providers: [],
+  providers: [LoginActivate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

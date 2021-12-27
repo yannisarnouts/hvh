@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-login',
@@ -9,14 +10,20 @@ import {AuthService} from "../../../services/auth.service";
 export class AdminLoginComponent implements OnInit {
   email = '';
   password = '';
+  public errorMessage = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   signIn() {
-    this.authService.SignIn(this.email, this.password);
+    const _ = this;
+    this.authService.SignIn(this.email, this.password).then(function(userCredentials: any) {
+      _.router.navigate(['/admin']);
+    }).catch(function(error: any) {
+      _.errorMessage = true;
+    });
   }
 
 }
