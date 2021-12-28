@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {query, where} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,12 @@ export class NomineeService {
         .set(data)
         .then(res => {}, err => reject(err));
     });
+  }
+  getNominees() {
+    return this.fs.collection("nominees").get();
+  }
+  /*TODO*/
+  getNomineeBy(searchValue: string) {
+    return this.fs.collection('nominees').ref.where('email', '==', searchValue).get();
   }
 }

@@ -1,0 +1,27 @@
+<div class="container pt-3">
+  <div class="input-group float-end" style="width: 20vw;">
+    <label for="search"></label>
+    <input type="text" [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Zoek iets...">
+    <button (click)="searchNominee()" class="btn btn-primary">
+      Zoek
+    </button>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">E-mail Publisher</th>
+      <th scope="col">Name Nominee</th>
+      <th scope="col">Company Nominee</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let nominee of nominees; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{nominee.email}}</td>
+      <td>{{nominee.firstname}} {{nominee.lastname}}</td>
+      <td>{{nominee.company}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

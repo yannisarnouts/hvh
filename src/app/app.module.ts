@@ -18,6 +18,7 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
 import { ContentComponent } from './components/content/content.component';
 import { SubmitContentComponent } from './components/admin/submit-content/submit-content.component';
 import { ContentPostComponent } from './components/content-post/content-post.component';
+import { NomineesComponent } from './components/admin/nominees/nominees.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ContentPostComponent } from './components/content-post/content-post.com
     AdminPanelComponent,
     ContentComponent,
     SubmitContentComponent,
-    ContentPostComponent
+    ContentPostComponent,
+    NomineesComponent
   ],
   imports: [
     BrowserModule,
