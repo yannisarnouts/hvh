@@ -1,1 +1,26 @@
-<p>submit-content works!</p>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="name">Titel</label>
+      <input type="text" [(ngModel)]="content.title" class="form-control" id="name" name="name"
+             placeholder="Enter article name">
+    </div>
+    <div class="form-group">
+      <label for="link">Topic</label>
+      <input type="text" [(ngModel)]="content.topic" class="form-control" id="link" name="link"
+             placeholder="E.g. Change Management">
+    </div>
+    <div class="form-group">
+      <label for="source">Tekst</label>
+      <textarea  [(ngModel)]="content.text" class="form-control" id="source" name="source"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="author">Auteur</label><br/>
+      <input type="text" [(ngModel)]="content.author" class="form-control" id="author" name="author"
+             placeholder="Enter author name">
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary" (click)="createContent()">Submit</button>
+    <p *ngIf="submitted">Toegevoegd!</p>
+  </form>
+</div>

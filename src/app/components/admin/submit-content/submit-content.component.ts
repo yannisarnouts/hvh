@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {ContentService} from "../../../services/content.service";
+
+export interface Content {
+  title: string;
+  author: string;
+  topic: string;
+  text: string
+}
 
 @Component({
   selector: 'app-submit-content',
@@ -6,10 +14,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./submit-content.component.css']
 })
 export class SubmitContentComponent implements OnInit {
+  content: Content = {title: '', author: '', topic: '', text: ''};
+  submitted = false;
 
-  constructor() { }
+  constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
+  }
+
+  createContent() {
+    this.contentService.createContent(this.content).then(() => {
+      console.log("Artikel is toegevoegd");
+      this.submitted = true;
+    });
   }
 
 }
