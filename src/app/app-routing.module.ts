@@ -8,6 +8,7 @@ import {AdminPanelComponent} from "./components/admin/admin-panel/admin-panel.co
 import {AuthService} from "./services/auth.service";
 import {ContentComponent} from "./components/content/content.component";
 import {SubmitContentComponent} from "./components/admin/submit-content/submit-content.component";
+import {ContentPostComponent} from "./components/content-post/content-post.component";
 
 @Injectable()
 export class LoginActivate implements CanActivate {
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'press', component: PressComponent},
   {path: 'content', component: ContentComponent},
+  {path: 'content/:id', component: ContentPostComponent},
   {path: 'admin/submitArticles', component: SubmitArticlesComponent, canActivate: [LoginActivate]},
   {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]},
   {path: 'admin/submitContent', component: SubmitContentComponent},

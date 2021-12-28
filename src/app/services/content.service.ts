@@ -16,4 +16,8 @@ export class ContentService {
   getContents() {
     return this.fs.collection("contents").get();
   }
+
+  getContent(id: string) {
+    return this.fs.collection("contents").doc(id).valueChanges();
+  }
 }

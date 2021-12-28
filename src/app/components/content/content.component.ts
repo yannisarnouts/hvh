@@ -18,8 +18,9 @@ export class ContentComponent implements OnInit {
   getContents() {
     this.contentService.getContents().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {
-        this.contents.push(doc.data());
-        console.log(doc.data());
+        let cont: any = doc.data();
+        cont.id = doc.id;
+        this.contents.push(cont);
       })
     });
   }

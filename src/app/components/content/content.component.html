@@ -25,20 +25,20 @@
             <!-- card-header -->
             <div >
 
-              <a class="btn-get-started m-4" href="#">{{content.topic}}</a>
+              <span class="btn-get-started m-4">{{content.topic}}</span>
             </div>
             <!-- card-img -->
-            <a href="https://blog.topdesk.com/employee-experience/self-service/digital-self-service/">
+            <a href="/content/{{content.id}}">
                 <img style="width: 100%" src="https://blog.topdesk.com/wp-content/uploads/2021/02/Digital_Self_Service-442x208.png" alt="Digital self-service" loading="lazy" srcset="https://blog.topdesk.com/wp-content/uploads/2021/02/Digital_Self_Service-442x208.png 442w, https://blog.topdesk.com/wp-content/uploads/2021/02/Digital_Self_Service-300x142.png 300w, https://blog.topdesk.com/wp-content/uploads/2021/02/Digital_Self_Service-1024x483.png 1024w, https://blog.topdesk.com/wp-content/uploads/2021/02/Digital_Self_Service-768x362.png 768w, https://blog.topdesk.com/wp-content/uploads/2021/02/Digital_Self_Service.png 1200w" sizes="(max-width: 442px) 100vw, 442px">
             </a>
             <!-- card-body -->
             <div class="card-body">
-              <a href="https://blog.topdesk.com/employee-experience/self-service/digital-self-service/">
+              <a href="/content/{{content.id}}">
                 <h3 class="card-title">{{content.title}}</h3>
               </a>
-              <div class="d-none d-xl-block">
+              <div>
                 <p>{{content.text.toString().substring(0,100)}}</p>
-                <p>...<a class="card-readmore" href="https://blog.topdesk.com/employee-experience/self-service/digital-self-service/">
+                <p>...<a class="card-readmore" href="/content/{{content.id}}">
                   Read more                </a></p>
               </div>
             </div>

@@ -17,6 +17,7 @@ import { PressComponent } from './components/press/press.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { ContentComponent } from './components/content/content.component';
 import { SubmitContentComponent } from './components/admin/submit-content/submit-content.component';
+import { ContentPostComponent } from './components/content-post/content-post.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SubmitContentComponent } from './components/admin/submit-content/submit
     PressComponent,
     AdminPanelComponent,
     ContentComponent,
-    SubmitContentComponent
+    SubmitContentComponent,
+    ContentPostComponent
   ],
   imports: [
     BrowserModule,
