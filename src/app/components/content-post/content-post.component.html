@@ -1,16 +1,44 @@
-<section id="hero" class="d-flex align-items-center">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-        <h2 style="color: #3a3a3a">{{content.title}}</h2>
-        <h3>{{content.topic}}</h3>
+<section class="hero" style="margin-top: -3rem">
+    <div>
+      <div class="container pt-3">
+        <h1>{{content.title}}</h1>
       </div>
-      <div class="col-lg-8 order-1 order-lg-2 hero-img">
+      <div class="container">
         <img
-          src="https://blog.topdesk.com/wp-content/uploads/2021/11/TOPdesk_blog-header_what-to-look-for-in-an-ITSM-vendor-1024x512.jpg"
-          class="img-fluid" alt="">
+          src="https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1200&amp;name=landing-page_header_bpsm_best_practice.png"
+          width="1000"
+          alt="landing-page_header_press.png" title="landing-page_header_press.png"
+          srcset="https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=600&amp;name=landing-page_header_bpsm_best_practice.png 600w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1200&amp;name=landing-page_header_bpsm_best_practice.png 1200w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1800&amp;name=landing-page_header_bpsm_best_practice.png 1800w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=2400&amp;name=landing-page_header_bpsm_best_practice.png 2400w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=3000&amp;name=landing-page_header_bpsm_best_practice.png 3000w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=3600&amp;name=landing-page_header_bpsm_best_practice.png 3600w"
+          sizes="(max-width: 1200px) 100vw, 1200px"></div>
+    </div>
+</section>
+
+<section id="PostContent" class="post-content pt-lg-5">
+
+  <!-- Primary Category/Author/Date -->
+  <div class="container post-info">
+    <div class="row">
+      <div class="col-12 offset-lg-1 col-lg-9 col-xl-8">
+        <span class="btn-get-started mt-4 mb-2 p-2">{{content.topic}}</span>
+        <h3><strong>By <a href="#" rel="author">{{content.author}}</a> on {{content.date}}</strong></h3>
       </div>
     </div>
   </div>
-</section><!-- End Hero -->
+  <!-- flex content -->
+  <div class="container post-text">
+    <div class="row">
+      <div class="col-12 offset-lg-1 col-lg-9 col-xl-8">
+        {{content.intro}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container post-text pt-3">
+    <div class="row">
+      <div class="col-12 offset-lg-1 col-lg-9 col-xl-8">
+        <div [innerHTML]="content.html"></div>
+      </div>
+    </div>
+  </div>
+
+</section>

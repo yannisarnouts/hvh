@@ -21,11 +21,11 @@
       <div class="row">
 
         <div class="col-12 col-md-6 col-xl-4 card-column pb-3" *ngFor="let content of contents">
-          <div class="card border-2">
+          <div class="card border-2 h-100">
             <!-- card-header -->
             <div >
 
-              <span class="btn-get-started m-4">{{content.topic}}</span>
+              <span class="btn-get-started m-4 p-2">{{content.topic}}</span>
             </div>
             <!-- card-img -->
             <a href="/content/{{content.id}}">
@@ -37,14 +37,14 @@
                 <h3 class="card-title">{{content.title}}</h3>
               </a>
               <div>
-                <p>{{content.text.toString().substring(0,100)}}</p>
+                <p>{{content.intro.toString().substring(0,100)}}</p>
                 <p>...<a class="card-readmore" href="/content/{{content.id}}">
                   Read more                </a></p>
               </div>
             </div>
             <!-- card-footer -->
             <div class="card-footer bg-transparent">
-              <h4>By <a href="#" title="Posts by Sumit De" rel="author">{{content.author}}</a> on {{content.date}}</h4></div>
+              <h4>By <a href="#" rel="author">{{content.author}}</a> on {{content.date}}</h4></div>
           </div>
         </div>
       </div>
