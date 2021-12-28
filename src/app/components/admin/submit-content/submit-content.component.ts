@@ -5,7 +5,8 @@ export interface Content {
   title: string;
   author: string;
   topic: string;
-  text: string
+  text: string;
+  date: string;
 }
 
 @Component({
@@ -14,7 +15,7 @@ export interface Content {
   styleUrls: ['./submit-content.component.css']
 })
 export class SubmitContentComponent implements OnInit {
-  content: Content = {title: '', author: '', topic: '', text: ''};
+  content: Content = {title: '', author: '', topic: '', text: '', date: ''};
   submitted = false;
 
   constructor(private contentService: ContentService) { }

@@ -19,6 +19,10 @@
       <input type="text" [(ngModel)]="content.author" class="form-control" id="author" name="author"
              placeholder="Enter author name">
     </div>
+    <div class="form-group">
+      <label for="date">Date of content</label><br/>
+      <input type="date" [(ngModel)]="content.date" name="date" id="date">
+    </div>
     <br/>
     <button type="submit" class="btn btn-primary" (click)="createContent()">Submit</button>
     <p *ngIf="submitted">Toegevoegd!</p>
