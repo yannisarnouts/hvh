@@ -1,16 +1,14 @@
 <section class="hero" style="margin-top: -3rem">
-    <div>
-      <div class="container pt-3">
-        <h1>{{content.title}}</h1>
-      </div>
-      <div class="container">
-        <img
-          src="https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1200&amp;name=landing-page_header_bpsm_best_practice.png"
-          width="1000"
-          alt="landing-page_header_press.png" title="landing-page_header_press.png"
-          srcset="https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=600&amp;name=landing-page_header_bpsm_best_practice.png 600w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1200&amp;name=landing-page_header_bpsm_best_practice.png 1200w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1800&amp;name=landing-page_header_bpsm_best_practice.png 1800w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=2400&amp;name=landing-page_header_bpsm_best_practice.png 2400w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=3000&amp;name=landing-page_header_bpsm_best_practice.png 3000w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=3600&amp;name=landing-page_header_bpsm_best_practice.png 3600w"
-          sizes="(max-width: 1200px) 100vw, 1200px"></div>
+  <div>
+    <div class="container pt-3">
+      <h1>{{content.title}}</h1>
     </div>
+    <div class="container">
+      <img
+        src="{{content.img}}"  style="max-height: 300px"
+        alt="{{content.title}} banner" title="{{content.title}} banner">
+    </div>
+  </div>
 </section>
 
 <section id="PostContent" class="post-content pt-lg-5">

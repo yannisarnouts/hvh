@@ -20,8 +20,12 @@ export class ContentComponent implements OnInit {
       querySnapshot.forEach(doc => {
         let cont: any = doc.data();
         cont.id = doc.id;
+        cont.fullDate = new Date(cont.date);
         this.contents.push(cont);
-      })
+      });
+      this.contents.sort((a, b) => {
+        return b.fullDate - a.fullDate
+      });
     });
   }
 

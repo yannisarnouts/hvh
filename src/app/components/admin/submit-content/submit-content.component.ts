@@ -8,6 +8,7 @@ export interface Content {
   intro: string;
   date: string;
   html: string;
+  img: string;
 }
 
 @Component({
@@ -16,7 +17,7 @@ export interface Content {
   styleUrls: ['./submit-content.component.css']
 })
 export class SubmitContentComponent implements OnInit {
-  content: Content = {title: '', author: '', topic: '', intro: '', date: '', html: ''};
+  content: Content = {title: '', author: '', topic: '', intro: '', date: '', html: '', img: ''};
   submitted = false;
 
   constructor(private contentService: ContentService) { }
@@ -28,7 +29,7 @@ export class SubmitContentComponent implements OnInit {
     this.contentService.createContent(this.content).then(() => {
       console.log("Artikel is toegevoegd");
       this.submitted = true;
-      this.content = {title: '', author: '', topic: '', intro: '', date: '', html: ''};
+      this.content = {title: '', author: '', topic: '', intro: '', date: '', html: '', img: ''};
     });
   }
 
