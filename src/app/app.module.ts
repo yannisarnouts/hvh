@@ -15,6 +15,8 @@ import {HomeComponent, NominateDialog} from './components/home/home.component';
 import { SubmitArticlesComponent } from './components/admin/submit-articles/submit-articles.component';
 import { PressComponent } from './components/press/press.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { ContentComponent } from './components/content/content.component';
+import { SubmitContentComponent } from './components/admin/submit-content/submit-content.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
     HomeComponent,
     SubmitArticlesComponent,
     PressComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    ContentComponent,
+    SubmitContentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,47 +1,33 @@
-<div class="container">
-  <div id="hs_cos_wrapper_widget_1611570630949" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module"
-       style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
-    <div class="row-fluid-wrapper row-depth-1 row-number-1" style="background-color: #ffffff">
-      <div class="row-fluid ">
-        <div class="span12 widget-span widget-type-cell page-center padding48tb" style="" data-widget-type="cell"
-             data-x="0" data-w="12">
-          <div class="row-fluid-wrapper row-depth-1 row-number-2 ">
-            <div class="row-fluid ">
-              <div class="span8 widget-span widget-type-rich_text " style="" data-widget-type="rich_text" data-x="2"
-                   data-w="8">
-                <div class="cell-wrapper layout-widget-wrapper">
+<div class="pt-lg-5">
+  <div class="hero">
 
-                  <h2 *ngFor="let y of yearList">
+    <div style="margin-top: -3rem">
+      <div class="container">
+        <img
+          src="https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1200&amp;name=landing-page_header_bpsm_best_practice.png"
+          width="1200"
+          alt="landing-page_header_press.png" title="landing-page_header_press.png"
+          srcset="https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=600&amp;name=landing-page_header_bpsm_best_practice.png 600w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1200&amp;name=landing-page_header_bpsm_best_practice.png 1200w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=1800&amp;name=landing-page_header_bpsm_best_practice.png 1800w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=2400&amp;name=landing-page_header_bpsm_best_practice.png 2400w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=3000&amp;name=landing-page_header_bpsm_best_practice.png 3000w, https://page.topdesk.com/hs-fs/hubfs/2_Images/Headers/Landing-pages/landing-page_header_bpsm_best_practice.png?width=3600&amp;name=landing-page_header_bpsm_best_practice.png 3600w"
+          sizes="(max-width: 1200px) 100vw, 1200px"></div>
+    </div>
+
+    <div class="container pt-3">
+      <h1>Persberichten</h1>
+      <span style="color: #3a3a3a; font-size: 16px">TOPdesk in de media.</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h2 *ngFor="let y of yearList">
                     <span *ngIf="y.nr > 0">{{y.year}}
                       <h4 *ngFor="let m of monthList">
-                    <strong *ngIf="m.nr > 0">{{m.month}}</strong>
-                    <p *ngFor="let article of articles">
-                      <span
-                        *ngIf="article.date.toString().includes(m.code) && article.date.toString().includes(y.year)"><a
-                        href="{{article.link}}">{{article.name}}</a> - {{article.source}}</span>
-                    </p>
-                  </h4>
-                      </span>
-                  </h2>
-                </div>
-                <!--end layout-widget-wrapper -->
-              </div>
-              <!--end widget-span -->
-              <div class="span4 widget-span widget-type-linked_image " style="" data-widget-type="linked_image"
-                   data-x="8" data-w="4">
-                <div class="cell-wrapper layout-widget-wrapper">
-                </div>
-                <!--end layout-widget-wrapper -->
-              </div>
-              <!--end widget-span -->
-            </div>
-            <!--end row-->
-          </div>
-          <!--end row-wrapper -->
-        </div>
-        <!--end widget-span -->
-      </div>
-      <!--end row-->
-    </div>
-    <!--end row-wrapper --></div>
+                        <strong *ngIf="m.nr > 0">{{m.month}}</strong>
+                        <p *ngFor="let article of articles">
+                          <span
+                            *ngIf="article.date.toString().includes(m.code) && article.date.toString().includes(y.year)"><a
+                            href="{{article.link}}" style="font-weight: 600">{{article.name}}</a> - {{article.source}}</span>
+                        </p>
+                      </h4>
+                    </span>
+  </h2>
 </div>

@@ -6,6 +6,8 @@ import {SubmitArticlesComponent} from "./components/admin/submit-articles/submit
 import {PressComponent} from "./components/press/press.component";
 import {AdminPanelComponent} from "./components/admin/admin-panel/admin-panel.component";
 import {AuthService} from "./services/auth.service";
+import {ContentComponent} from "./components/content/content.component";
+import {SubmitContentComponent} from "./components/admin/submit-content/submit-content.component";
 
 @Injectable()
 export class LoginActivate implements CanActivate {
@@ -27,8 +29,10 @@ const routes: Routes = [
   {path: 'aLogin', component: AdminLoginComponent},
   {path: '', component: HomeComponent},
   {path: 'press', component: PressComponent},
+  {path: 'content', component: ContentComponent},
   {path: 'admin/submitArticles', component: SubmitArticlesComponent, canActivate: [LoginActivate]},
-  {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]}
+  {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]},
+  {path: 'admin/submitContent', component: SubmitContentComponent},
 ];
 
 @NgModule({
