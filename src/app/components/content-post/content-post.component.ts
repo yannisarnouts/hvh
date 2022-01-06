@@ -13,8 +13,8 @@ export class ContentPostComponent implements OnInit {
   constructor(private router: Router, private contentService: ContentService) { }
 
   ngOnInit(): void {
-    this.getContentPost();
     this.getContentPosts();
+    this.getContentPost();
   }
 
   getContentPost() {
@@ -32,9 +32,7 @@ export class ContentPostComponent implements OnInit {
     if (sessionStorage.getItem('contents') !== null) {
       // @ts-ignore
       contentsString = sessionStorage.getItem('contents');
+      this.contents = JSON.parse(contentsString);
     }
-    this.contents = JSON.parse(contentsString);
-    console.log(this.contents);
   }
-
 }
