@@ -20,7 +20,7 @@ export class ContentPostComponent implements OnInit {
   getContentPost() {
     const id = this.router.url.split("/")[2];
     if (this.contents.length > 0) {
-      this.content = this.contents.find(c => c.id = id);
+      this.content = this.contents.find(c => c.id == id);
     } else {
       this.contentService.getContent(id).subscribe(res => {
         this.content = res;
