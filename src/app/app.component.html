@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg pb-3" style="background-color: #0A7DA0; padding-left: 48px;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0A7DA0; padding-left: 48px;">
   <a class="navbar-brand" href="#"><img class="logo"
                                         src="https://blog.topdesk.com/wp-content/themes/blogux/img/TOPdesk_White_Logo.svg"
                                         alt="TOPdesk Logo" height="24px"></a>
@@ -6,18 +6,40 @@
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link navItem" href="#">Home</a>
+        <a class="nav-link navItem" href="#" style="color: white">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navItem" href="/press">In de pers</a>
+        <a class="nav-link navItem" href="/press" style="color: white">In de pers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link navItem" href="/content">Nieuws</a>
+        <a class="nav-link navItem" href="/content" style="color: white">Nieuws</a>
       </li>
     </ul>
   </div>
 </nav>
 <router-outlet></router-outlet>
+<footer class="page-footer font-small blue pt-4" style="background-color: #0A7DA0;">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row footer-row align-items-center">
+      <div class="col-md-4 mt-md-0 mt-3" style="margin-right: 8vw; margin-left: 2vw;">
+        <span class="footer-copyright"><span class="footer-topdesk">©TOPdesk.</span>&nbsp;All rights reserved</span>
+      </div>
+      <div class="col-md-3">
+        <li id="menu-item-147"
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147 list-inline-item"><a
+          target="_blank" rel="noopener" href="https://www.topdesk.com/en/cookie-policy/"
+          class="blogux-link-external-white">Cookie policy</a></li>
+      </div>
+      <div class="col-md-3">
+        <li id="menu-item-148"
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-148 list-inline-item"><a
+          target="_blank" rel="noopener" href="https://www.topdesk.com/en/privacy-policy/"
+          class="blogux-link-external-white">Privacy policy</a></li>
+      </div>
+    </div>
+  </div>
+</footer>
