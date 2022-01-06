@@ -35,8 +35,8 @@ const routes: Routes = [
   {path: 'content/:id', component: ContentPostComponent},
   {path: 'admin/submitArticles', component: SubmitArticlesComponent, canActivate: [LoginActivate]},
   {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]},
-  {path: 'admin/submitContent', component: SubmitContentComponent},
-  {path: 'admin/nominees', component: NomineesComponent},
+  {path: 'admin/submitContent', component: SubmitContentComponent, canActivate: [LoginActivate]},
+  {path: 'admin/nominees', component: NomineesComponent, canActivate: [LoginActivate]},
 ];
 
 @NgModule({

@@ -16,6 +16,6 @@ export class AdminPanelComponent implements OnInit {
 
   logout() {
     this.authService.SignOut();
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/aLogin']);
   }
 }

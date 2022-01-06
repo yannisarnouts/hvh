@@ -8,7 +8,9 @@ import {NomineeService} from "../../../services/nominee.service";
 })
 export class NomineesComponent implements OnInit {
   nominees = new Array();
-  searchValue = '';
+  fullNominees = new Array();
+  searchValue = ''; searchBy = 'email';
+  searchNominees = new Array();
 
   constructor(private nomineeService: NomineeService) { }
 
@@ -25,12 +27,30 @@ export class NomineesComponent implements OnInit {
         this.nominees.push(cont);
       });
     });
+    this.fullNominees = this.nominees;
   }
 
   searchNominee() {
-    console.log(this.searchValue);
-    this.nomineeService.getNomineeBy(this.searchValue).then(res => {
-      console.log(res.docs);
-    });
+    console.log(this.searchBy);
+    this.searchNominees = [];
+    switch (this.searchBy) {
+      case 'email':
+        this.searchNominees = this.fullNominees.filter(n => n.email.toLowerCase().includes(this.searchValue.toLowerCase()));
+        break;
+      case 'firstname':
+        this.searchNominees = this.fullNominees.filter(n => n.firstname.toLowerCase().includes(this.searchValue.toLowerCase()));
+        break;
+      case 'lastname':
+        this.searchNominees = this.fullNominees.filter(n => n.lastname.toLowerCase().includes(this.searchValue.toLowerCase()));
+        break;
+      case 'company':
+        this.searchNominees = this.fullNominees.filter(n => n.company.toLowerCase().includes(this.searchValue.toLowerCase()));
+        break;
+      case 'phone':
+        this.searchNominees = this.fullNominees.filter(n => n.phone.toLowerCase().includes(this.searchValue.toLowerCase()));
+        break;
+    }
+    console.log(this.searchNominees);
+    this.nominees = this.searchNominees;
   }
 }
