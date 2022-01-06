@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ContentService} from "../../services/content.service";
-import {Content} from "../admin/submit-content/submit-content.component";
 
 @Component({
   selector: 'app-content-post',
@@ -9,7 +8,7 @@ import {Content} from "../admin/submit-content/submit-content.component";
   styleUrls: ['./content-post.component.css']
 })
 export class ContentPostComponent implements OnInit {
-  content: any = {title: '', author: '', topic: '', text: '', date: ''};
+  content: any;
   constructor(private router: Router, private contentService: ContentService) { }
 
   ngOnInit(): void {

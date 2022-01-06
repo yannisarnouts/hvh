@@ -11,17 +11,41 @@
              placeholder="E.g. Change Management" required>
     </div>
     <div class="form-group">
-      <label for="intro">Intro*</label>
-      <textarea  [(ngModel)]="content.intro" class="form-control" id="intro" name="intro"></textarea>
+      <label for="bannerIntro">Banner Intro* (deze zal worden getoond in een content box bij de overview pagina)</label>
+      <textarea [(ngModel)]="content.bannerIntro" class="form-control" id="bannerIntro" name="bannerIntro"></textarea>
     </div>
     <div class="form-group">
       <label for="banner">Banner link</label>
-      <input type="url"  [(ngModel)]="content.img" class="form-control" id="banner" name="banner">
+      <input type="url" [(ngModel)]="content.img" class="form-control" id="banner" name="banner">
     </div>
     <div class="form-group">
-      <label for="html">Html</label>
-      <textarea  [(ngModel)]="content.html" class="form-control" id="html" name="html"></textarea>
+      <label for="intro">Intro* (intro tekst in de content pagina)</label>
+      <textarea [(ngModel)]="content.intro" class="form-control" id="intro" name="intro"></textarea>
     </div>
+    <div class="form-group">
+      <label for="nrTitles">Aantal paragrafen (dit gaat over het aantal subtitels en bijbehorende content)</label>
+      <div class="input-group" style="width: 10vw">
+        <input type="number" [(ngModel)]="nrTitles" class="form-control" id="nrTitles"
+               name="nrTitles"
+               placeholder="E.g. Change Management">
+        <button (click)="addSubcontents()" class="btn btn-secondary">OK</button>
+      </div>
+    </div>
+    <div *ngFor="let subContent of subContents; let i = index;">
+      <div class="form-group">
+        <label for="subtitle">Subtitel({{i+1}})*</label>
+        <input type="text" [(ngModel)]="subContent.title" class="form-control" id="subtitle" name="subtitle"
+               placeholder="Enter article name" required>
+      </div>
+      <div class="form-group">
+        <label for="subhtml">Html({{i+1}})*</label>
+        <textarea [(ngModel)]="subContent.html" class="form-control" id="subhtml" name="subhtml"></textarea>
+      </div>
+    </div>
+    <!--<div class="form-group">-->
+      <!--<label for="html">Html</label>-->
+      <!--<textarea [(ngModel)]="content.html" class="form-control" id="html" name="html"></textarea>-->
+    <!--</div>-->
     <div class="form-group">
       <label for="author">Auteur*</label><br/>
       <input type="text" [(ngModel)]="content.author" class="form-control" id="author" name="author"
@@ -32,7 +56,10 @@
       <input type="date" [(ngModel)]="content.date" name="date" id="date">
     </div>
     <br/>
-    <button type="submit" class="btn btn-primary" (click)="createContent()" [disabled]="this.content.title.length <= 1 || this.content.author.length <= 1 || this.content.date.length <= 1 || this.content.topic.length <= 1 || this.content.intro.length <= 1">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="createContent()"
+            [disabled]="this.content.title.length <= 1 || this.content.author.length <= 1 || this.content.date.length <= 1 || this.content.topic.length <= 1 || this.content.intro.length <= 1">
+      Submit
+    </button>
     <p *ngIf="submitted">Toegevoegd!</p>
   </form>
 </div>

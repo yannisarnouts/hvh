@@ -25,7 +25,7 @@
                         <p *ngFor="let article of articles">
                           <span
                             *ngIf="article.date.toString().includes(m.code) && article.date.toString().includes(y.year)"><a
-                            href="{{article.link}}" style="font-weight: 600">{{article.name}}</a> - {{article.source}}</span>
+                            href="{{article.link}}" target="_blank" style="font-weight: 600">{{article.name}}</a> - {{article.source}}</span>
                         </p>
                       </h4>
                     </span>
