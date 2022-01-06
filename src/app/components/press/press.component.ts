@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticleService} from "../../services/article.service";
+import {AuthService} from "../../services/auth.service";
 const months = [
   {"month": "December", "code": "Dec", "nr": 0},
   {"month": "November", "code": "Nov", "nr": 0},
@@ -30,37 +31,64 @@ const years = [
   styleUrls: ['./press.component.css']
 })
 export class PressComponent implements OnInit {
-  articles = new Array();
+  articles = new Array(); articlesSessionStorage = new Array();
   public monthList:{month:string, code:string, nr: number}[] = months;
   public yearList:{year:number, nr: number}[] = years;
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
+    this.getPressFromSessionStorage();
     this.getArticles();
   }
 
-  getArticles() {
-    this.articleService.getArticles().subscribe((querySnapshot) => {
-      querySnapshot.forEach(doc => {
-        const art: any = doc.data();
-        art.date = new Date(art.date);
-        if (this.monthList.find(m => m.code == art.date.toString().split(" ")[1]) != undefined) {
-          // @ts-ignore
-          this.monthList.find(m => m.code == art.date.toString().split(" ")[1]).nr++;
-        }
-        if (this.yearList.find(y => y.year == art.date.toString().split(" ")[3]) != undefined) {
-          // @ts-ignore
-          this.yearList.find(y => y.year == art.date.toString().split(" ")[3]).nr++;
-        }
-        this.articles.push(art);
+  async getArticles() {
+    const loggedIn = await this.authService.isLoggedIn();
+    if (!loggedIn && this.articlesSessionStorage.length > 0) {
+      this.articles = this.articlesSessionStorage;
+    } else {
+      this.articleService.getArticles().subscribe((querySnapshot) => {
+        querySnapshot.forEach(doc => {
+          const art: any = doc.data();
+          art.date = new Date(art.date);
+          this.getMonthList(art.date);
+          this.getYearList(art.date);
+          this.articles.push(art);
+        });
+        sessionStorage.setItem('press', JSON.stringify(this.articles));
+        this.articles.sort((a, b) => {
+          return b.date - a.date
+        });
+        console.log(this.articles)
       });
-      this.articles.sort((a, b) => {
-       return b.date - a.date
-      });
-      console.log(this.articles)
-    });
+    }
+  }
+  getPressFromSessionStorage() {
+    let contentsString = '';
+    if (sessionStorage.getItem('press') !== null) {
+      // @ts-ignore
+      contentsString = sessionStorage.getItem('press');
+      this.articlesSessionStorage = JSON.parse(contentsString);
+      for (let i = 0; i < this.articlesSessionStorage.length; i++) {
+        this.articlesSessionStorage[i].date = new Date(this.articlesSessionStorage[i].date)
+        this.getMonthList(this.articlesSessionStorage[i].date);
+        this.getYearList(this.articlesSessionStorage[i].date);
+      }
+      console.log(this.articlesSessionStorage)
+    }
+  }
+  getMonthList(artDate: any) {
+    if (this.monthList.find(m => m.code == artDate.toString().split(" ")[1]) != undefined) {
+      // @ts-ignore
+      this.monthList.find(m => m.code == artDate.toString().split(" ")[1]).nr++;
+    }
+  }
+  getYearList(artDate: any) {
+    if (this.yearList.find(y => y.year == artDate.toString().split(" ")[3]) != undefined) {
+      // @ts-ignore
+      this.yearList.find(y => y.year == artDate.toString().split(" ")[3]).nr++;
+    }
   }
 
 }

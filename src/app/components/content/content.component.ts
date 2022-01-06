@@ -29,8 +29,8 @@ export class ContentComponent implements OnInit {
           cont.id = doc.id;
           cont.fullDate = new Date(cont.date);
           this.contents.push(cont);
-          sessionStorage.setItem('contents', JSON.stringify(this.contents));
         });
+        sessionStorage.setItem('contents', JSON.stringify(this.contents));
         this.contents.sort((a, b) => {
           return b.fullDate - a.fullDate
         });
@@ -44,6 +44,5 @@ export class ContentComponent implements OnInit {
       contentsString = sessionStorage.getItem('contents');
       this.contentsSessionStorage = JSON.parse(contentsString);
     }
-    console.log(this.contentsSessionStorage);
   }
 }

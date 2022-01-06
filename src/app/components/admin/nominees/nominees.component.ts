@@ -50,7 +50,6 @@ export class NomineesComponent implements OnInit {
         this.searchNominees = this.fullNominees.filter(n => n.phone.toLowerCase().includes(this.searchValue.toLowerCase()));
         break;
     }
-    console.log(this.searchNominees);
     this.nominees = this.searchNominees;
   }
 }
