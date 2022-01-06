@@ -3,6 +3,8 @@
 }
 footer {
   font-size: 24px;
+  width: 100%;
+  bottom: 0;
 }
 footer .footer-copyright {
   font-size: 22px;
