@@ -9,17 +9,32 @@ import {ContentService} from "../../services/content.service";
 })
 export class ContentPostComponent implements OnInit {
   content: any;
+  contents = new Array();
   constructor(private router: Router, private contentService: ContentService) { }
 
   ngOnInit(): void {
     this.getContentPost();
+    this.getContentPosts();
   }
 
   getContentPost() {
     const id = this.router.url.split("/")[2];
-    console.log(this.contentService.getContent(id).subscribe(res => {
-      this.content = res;
-    }));
+    if (this.contents.length > 0) {
+      this.content = this.contents.find(c => c.id = id);
+    } else {
+      this.contentService.getContent(id).subscribe(res => {
+        this.content = res;
+      });
+    }
+  }
+  getContentPosts() {
+    let contentsString = '';
+    if (sessionStorage.getItem('contents') !== null) {
+      // @ts-ignore
+      contentsString = sessionStorage.getItem('contents');
+    }
+    this.contents = JSON.parse(contentsString);
+    console.log(this.contents);
   }
 
 }

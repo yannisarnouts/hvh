@@ -22,6 +22,7 @@ export class ContentComponent implements OnInit {
         cont.id = doc.id;
         cont.fullDate = new Date(cont.date);
         this.contents.push(cont);
+        sessionStorage.setItem('contents', JSON.stringify(this.contents));
       });
       this.contents.sort((a, b) => {
         return b.fullDate - a.fullDate
