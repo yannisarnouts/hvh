@@ -60,7 +60,6 @@ export class PressComponent implements OnInit {
         this.articles.sort((a, b) => {
           return b.date - a.date
         });
-        console.log(this.articles)
       });
     }
   }
@@ -75,7 +74,6 @@ export class PressComponent implements OnInit {
         this.getMonthList(this.articlesSessionStorage[i].date);
         this.getYearList(this.articlesSessionStorage[i].date);
       }
-      console.log(this.articlesSessionStorage)
     }
   }
   getMonthList(artDate: any) {

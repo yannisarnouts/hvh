@@ -31,7 +31,6 @@ export class NomineesComponent implements OnInit {
   }
 
   searchNominee() {
-    console.log(this.searchBy);
     this.searchNominees = [];
     switch (this.searchBy) {
       case 'email':

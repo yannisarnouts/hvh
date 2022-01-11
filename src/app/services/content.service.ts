@@ -6,7 +6,6 @@ import {Content} from "../components/admin/submit-content/submit-content.compone
   providedIn: 'root'
 })
 export class ContentService {
-
   constructor(private fs: AngularFirestore) { }
 
   createContent(content: Content): any {

@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
     const url = this.router.events.subscribe(res => {
       if (res instanceof NavigationEnd) {
         if (!res.url.includes('aLogin') && !res.url.includes('admin')) {
-          console.log(res);
           this.showFooter = true;
         }
       }

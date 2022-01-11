@@ -20,7 +20,6 @@ export class AuthService {
   }
 
   getCurrentUser() {
-    console.log(this.isLoggedIn());
     return this.afAuth.currentUser;
   }
 

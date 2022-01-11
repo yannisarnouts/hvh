@@ -38,7 +38,6 @@ export class SubmitContentComponent implements OnInit {
   }
 
   addSubcontents() {
-    console.log(this.subContents);
     this.subContents = [];
     for (let i = 0; i < this.nrTitles; i++) {
       this.subContents[i] = {title: '', html: '', nr: i+1};
