@@ -46,11 +46,9 @@ export class HomeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        console.log(this.nrTries);
         if (this.nrTries <= 5) {
           this.nrTries++;
           this.nomineeService.getNominee(result.email).then(docSnapshot => {
-            console.log(docSnapshot);
             if (!docSnapshot.exists) {
               result.date = new Date();
               this.nomineeService.createVote(result);
@@ -75,6 +73,7 @@ export class HomeComponent implements OnInit {
 export class NominateDialog {
   errorMessage = '';
   showError = false;
+  recaptcha: any;
   constructor(
     public dialogRef: MatDialogRef<NominateDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -89,6 +88,9 @@ export class NominateDialog {
       } else if (!this.data.phone.match(/^\+?[0-9]+$/g) || this.data.phone.length < 7 || this.data.phone.length > 16) {
         this.errorMessage = "Telefoonnummer is niet geldig";
         this.showError = true;
+        return true;
+      } else if (this.recaptcha == undefined) {
+        this.errorMessage = "Vinnk reCAPTCHA aan";
         return true;
       } else {
         this.showError = false;
