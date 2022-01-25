@@ -10,8 +10,7 @@ export class NomineeService {
   }
 
   getNominee(email: string) {
-  // , ref => ref.where('email', '==', email)
-    return this.fs.collection('nominees').doc(email).valueChanges();
+    return this.fs.firestore.doc('nominees/' + email).get();
   }
   createVote(data: any) {
     return new Promise<any>((resolve, reject) => {

@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit {
   async getContents() {
     const loggedIn = await this.authService.isLoggedIn();
     if (!loggedIn && this.contentsSessionStorage.length > 0) {
+      console.log("get from storage")
       this.contents = this.contentsSessionStorage;
     } else {
       this.contentService.getContents().subscribe((querySnapshot) => {

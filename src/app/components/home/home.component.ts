@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   phone: string = "";
   motivation: string = "";
   showSuccess = false; showError = false;
+  nrTries = 0;
 
   constructor(private nomineeService: NomineeService, public dialog: MatDialog) {}
 
@@ -45,16 +46,23 @@ export class HomeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.nomineeService.getNominee(result.email).subscribe(res => {
-          if (res === undefined) {
-            result.date = new Date();
-            this.nomineeService.createVote(result);
-            this.showSuccess = true;
-            return;
-          } else {
-            this.showError = true;
-          }
-        });
+        console.log(this.nrTries);
+        if (this.nrTries <= 5) {
+          this.nrTries++;
+          this.nomineeService.getNominee(result.email).then(docSnapshot => {
+            console.log(docSnapshot);
+            if (!docSnapshot.exists) {
+              result.date = new Date();
+              this.nomineeService.createVote(result);
+              this.showSuccess = true;
+              return;
+            } else {
+              this.showError = true;
+            }
+          });
+        } else {
+          this.showError = true;
+        }
       }
     });
   }
