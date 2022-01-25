@@ -9,17 +9,17 @@ import {Router} from "@angular/router";
 export class NomineeDetailComponent implements OnInit {
   nominees = new Array();
   nominee: any;
+  allNominators = new Array();
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getNominees();
-    this.getNominee();
   }
 
   getNominee() {
     const id = this.router.url.split("/")[3];
     this.nominee = this.nominees.find(n => n.id == id);
-    console.log(this.nominee);
+    this.getAllNominators();
   }
 
   getNominees() {
@@ -29,6 +29,12 @@ export class NomineeDetailComponent implements OnInit {
       nomineeString = sessionStorage.getItem('nominees');
       this.nominees = JSON.parse(nomineeString);
     }
+    this.getNominee();
   }
-
+  getAllNominators() {
+    this.allNominators = this.nominees.filter(n => n.lastname.toLowerCase().includes(this.nominee.lastname.toLowerCase()));
+    this.allNominators = this.allNominators.filter(n => n.firstname.toLowerCase().includes(this.nominee.firstname.toLowerCase()));
+    this.allNominators = this.allNominators.filter(n => n.company.toLowerCase().includes(this.nominee.company.toLowerCase()));
+    console.log(this.allNominators);
+  }
 }

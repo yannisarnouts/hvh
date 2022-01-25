@@ -1,4 +1,5 @@
 <div class="container pt-3">
+  <a href="admin/nominees" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
   <form>
     <div class="form-group">
       <label for="email">Email submitter</label>
@@ -25,4 +26,12 @@
       <textarea [(ngModel)]="nominee.motivation" class="form-control" id="motivation" name="motivation" readonly></textarea>
     </div>
   </form>
+  <br/>
+  <h1>Deze persoon is {{allNominators.length}} keer genomineerd</h1>
+  <span>Ook genomineerd door:</span>
+  <ol>
+    <li *ngFor="let n of allNominators">
+      <a href="admin/nominees/{{n.id}}"> {{n.email}} - {{n.motivation}} </a>
+    </li>
+  </ol>
 </div>

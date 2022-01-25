@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NomineeService} from "../../../services/nominee.service";
+import {ExcelService} from "../../../services/excel.service";
 
 @Component({
   selector: 'app-nominees',
@@ -12,7 +13,7 @@ export class NomineesComponent implements OnInit {
   searchValue = ''; searchBy = 'email';
   searchNominees = new Array();
 
-  constructor(private nomineeService: NomineeService) { }
+  constructor(private nomineeService: NomineeService, private excelService: ExcelService) { }
 
   ngOnInit(): void {
     this.getNominees();
@@ -48,5 +49,9 @@ export class NomineesComponent implements OnInit {
         break;
     }
     this.nominees = this.searchNominees;
+  }
+
+  exportAsXSLX() {
+    this.excelService.exportAsExcelFile(this.nominees, 'nominees');
   }
 }

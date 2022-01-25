@@ -15,7 +15,6 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getContentsFromSessionStorage();
-    this.getContents();
   }
 
   async getContents() {
@@ -44,5 +43,6 @@ export class ContentComponent implements OnInit {
       contentsString = sessionStorage.getItem('contents');
       this.contentsSessionStorage = JSON.parse(contentsString);
     }
+    this.getContents();
   }
 }
