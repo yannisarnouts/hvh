@@ -12,24 +12,39 @@ export class NomineesComponent implements OnInit {
   fullNominees = new Array();
   searchValue = ''; searchBy = 'email';
   searchNominees = new Array();
+  nomineesSessionStorage = new Array();
 
   constructor(private nomineeService: NomineeService, private excelService: ExcelService) { }
 
   ngOnInit(): void {
-    this.getNominees();
+    this.getContentsFromSessionStorage();
   }
 
   getNominees() {
-    this.nomineeService.getNominees().subscribe((querySnapshot) => {
-      querySnapshot.forEach(doc => {
-        let cont: any = doc.data();
-        cont.id = doc.id;
-        cont.date = this.toDateTime(cont.date.seconds);
-        this.nominees.push(cont);
+    if (this.nomineesSessionStorage.length > 0) {
+      this.nominees = this.nomineesSessionStorage;
+    } else {
+      this.nomineeService.getNominees().subscribe((querySnapshot) => {
+        querySnapshot.forEach(doc => {
+          let cont: any = doc.data();
+          cont.id = doc.id;
+          cont.date = this.toDateTime(cont.date.seconds);
+          this.nominees.push(cont);
+        });
+        sessionStorage.setItem('nominees', JSON.stringify(this.nominees));
       });
-      sessionStorage.setItem('nominees', JSON.stringify(this.nominees));
-    });
+    }
     this.fullNominees = this.nominees;
+  }
+
+  getContentsFromSessionStorage() {
+    let contentsString = '';
+    if (sessionStorage.getItem('nominees') !== null) {
+      // @ts-ignore
+      contentsString = sessionStorage.getItem('nominees');
+      this.nomineesSessionStorage = JSON.parse(contentsString);
+    }
+    this.getNominees();
   }
 
   searchNominee() {
