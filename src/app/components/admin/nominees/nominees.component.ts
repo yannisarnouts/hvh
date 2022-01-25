@@ -26,6 +26,7 @@ export class NomineesComponent implements OnInit {
         cont.fullDate = new Date(cont.date);
         this.nominees.push(cont);
       });
+      sessionStorage.setItem('nominees', JSON.stringify(this.nominees));
     });
     this.fullNominees = this.nominees;
   }
@@ -44,9 +45,6 @@ export class NomineesComponent implements OnInit {
         break;
       case 'company':
         this.searchNominees = this.fullNominees.filter(n => n.company.toLowerCase().includes(this.searchValue.toLowerCase()));
-        break;
-      case 'phone':
-        this.searchNominees = this.fullNominees.filter(n => n.phone.toLowerCase().includes(this.searchValue.toLowerCase()));
         break;
     }
     this.nominees = this.searchNominees;

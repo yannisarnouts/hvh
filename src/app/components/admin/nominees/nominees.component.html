@@ -2,7 +2,6 @@
   <div class="input-group float-end" style="width: 40vw;">
     <select [(ngModel)]="searchBy" name="searchBy" id="searchBy">
       <option value="email">E-mail</option>
-      <option value="phone">Phone</option>
       <option value="firstname">Firstname</option>
       <option value="lastname">Lastname</option>
       <option value="company">Company</option>
@@ -20,7 +19,6 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">E-mail Publisher</th>
-      <th scope="col">Phone Publisher</th>
       <th scope="col">Name Nominee</th>
       <th scope="col">Company Nominee</th>
     </tr>
@@ -29,9 +27,9 @@
     <tr *ngFor="let nominee of nominees; let i = index">
       <th scope="row">{{i + 1}}</th>
       <td>{{nominee.email}}</td>
-      <td>{{nominee.phone}}</td>
       <td>{{nominee.firstname}} {{nominee.lastname}}</td>
       <td>{{nominee.company}}</td>
+      <td><a href="admin/nominees/{{nominee.id}}" class="btn btn-primary">Meer info</a></td>
     </tr>
     </tbody>
   </table>

@@ -1,0 +1,28 @@
+<div class="container pt-3">
+  <form>
+    <div class="form-group">
+      <label for="email">Email submitter</label>
+      <input type="text" [(ngModel)]="nominee.email" class="form-control" id="email" name="email" readonly>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone submitter</label>
+      <input type="text" [(ngModel)]="nominee.phone" class="form-control" id="phone" name="phone" readonly>
+    </div>
+    <div class="form-group">
+      <label for="firstname">Firstname nominee</label>
+      <input type="text" [(ngModel)]="nominee.firstname" class="form-control" id="firstname" name="firstname" readonly>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname nominee</label>
+      <input type="text" [(ngModel)]="nominee.lastname" class="form-control" id="lastname" name="lastname" readonly>
+    </div>
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input type="text" [(ngModel)]="nominee.company" class="form-control" id="company" name="company" readonly>
+    </div>
+    <div class="form-group">
+      <label for="motivation">Motivation</label>
+      <textarea [(ngModel)]="nominee.motivation" class="form-control" id="motivation" name="motivation" readonly></textarea>
+    </div>
+  </form>
+</div>
