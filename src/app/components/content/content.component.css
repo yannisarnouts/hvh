@@ -1,0 +1,7 @@
+#heroContent {
+  width: 100%;
+  height: 70vh;
+  background: linear-gradient(0deg,#b7ebe7,#b7ebe7) no-repeat,linear-gradient(to bottom right,#b7ebe7 49%,transparent 50%) no-repeat;
+  background-position: top,100% 78px;
+  background-size: 100% 78px,100% 36px;
+}

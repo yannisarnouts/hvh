@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private nomineeService: NomineeService, public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NominateDialog, {
@@ -73,7 +73,7 @@ export class NominateDialog {
 
   disableForm() {
     if (this.data.firstname.length > 1 && this.data.lastname.length > 1 && this.data.company.length > 1 && this.data.email.length > 1 && this.data.phone.length > 1 && this.data.motivation.length > 1) {
-      if (!this.data.email.match(/^\w+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.email.length < 6) {
+      if (!this.data.email.match(/^.+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.email.length < 6) {
         this.errorMessage = "E-mail adres is niet geldig";
         this.showError = true;
         return true;

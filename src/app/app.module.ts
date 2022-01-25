@@ -12,8 +12,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {HomeComponent, NominateDialog} from './components/home/home.component';
-import { SubmitArticlesComponent } from './components/admin/submit-articles/submit-articles.component';
-import { PressComponent } from './components/press/press.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { ContentComponent } from './components/content/content.component';
 import { SubmitContentComponent } from './components/admin/submit-content/submit-content.component';
@@ -26,8 +24,6 @@ import { NomineesComponent } from './components/admin/nominees/nominees.componen
     NominateDialog,
     AdminLoginComponent,
     HomeComponent,
-    SubmitArticlesComponent,
-    PressComponent,
     AdminPanelComponent,
     ContentComponent,
     SubmitContentComponent,

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router){}
 
   ngOnInit() {
-    const url = this.router.events.subscribe(res => {
+    this.router.events.subscribe(res => {
       if (res instanceof NavigationEnd) {
         if (!res.url.includes('aLogin') && !res.url.includes('admin')) {
           this.showFooter = true;
