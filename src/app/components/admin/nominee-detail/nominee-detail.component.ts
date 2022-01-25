@@ -35,6 +35,5 @@ export class NomineeDetailComponent implements OnInit {
     this.allNominators = this.nominees.filter(n => n.lastname.toLowerCase().includes(this.nominee.lastname.toLowerCase()));
     this.allNominators = this.allNominators.filter(n => n.firstname.toLowerCase().includes(this.nominee.firstname.toLowerCase()));
     this.allNominators = this.allNominators.filter(n => n.company.toLowerCase().includes(this.nominee.company.toLowerCase()));
-    console.log(this.allNominators);
   }
 }

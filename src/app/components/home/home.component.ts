@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
       if (result !== undefined) {
         this.nomineeService.getNominee(result.email).subscribe(res => {
           if (res === undefined) {
+            result.date = new Date();
             this.nomineeService.createVote(result);
             this.showSuccess = true;
             return;

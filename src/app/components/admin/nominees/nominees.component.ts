@@ -24,7 +24,7 @@ export class NomineesComponent implements OnInit {
       querySnapshot.forEach(doc => {
         let cont: any = doc.data();
         cont.id = doc.id;
-        cont.fullDate = new Date(cont.date);
+        cont.date = this.toDateTime(cont.date.seconds);
         this.nominees.push(cont);
       });
       sessionStorage.setItem('nominees', JSON.stringify(this.nominees));
@@ -53,5 +53,11 @@ export class NomineesComponent implements OnInit {
 
   exportAsXSLX() {
     this.excelService.exportAsExcelFile(this.nominees, 'nominees');
+  }
+
+  toDateTime(secs: any) {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t.toLocaleDateString("nl-BE");
   }
 }
