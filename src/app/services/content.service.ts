@@ -17,6 +17,6 @@ export class ContentService {
   }
 
   getContent(id: string) {
-    return this.fs.collection("contents").doc(id).valueChanges();
+    return this.fs.firestore.doc('contents/' + id).get();
   }
 }

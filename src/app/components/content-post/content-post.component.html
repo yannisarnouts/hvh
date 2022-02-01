@@ -1,5 +1,5 @@
 <section id="heroContentPost" class="hero" style="margin-top: -3rem">
-  <div>
+  <div *ngIf="content">
     <div class="container pt-3">
       <h1>{{content.title}}</h1>
     </div>
@@ -11,7 +11,7 @@
   </div>
 </section>
 
-<section id="PostContent" class="post-content pt-lg-5">
+<section id="PostContent" class="post-content pt-lg-5" *ngIf="content">
 
   <!-- Primary Category/Author/Date -->
   <div class="container post-info">

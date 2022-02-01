@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ContentService} from "../../services/content.service";
 import {AuthService} from "../../services/auth.service";
+import {environment} from "../../../environments/environment.prod";
 
 @Component({
   selector: 'app-content',
@@ -10,6 +11,7 @@ import {AuthService} from "../../services/auth.service";
 export class ContentComponent implements OnInit {
   contents = new Array();
   contentsSessionStorage = new Array();
+  // intro = environment.contentIntro;
 
   constructor(private contentService: ContentService, private authService: AuthService) { }
 

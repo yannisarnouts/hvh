@@ -1,0 +1,15 @@
+<div class="container pt-3" *ngIf="cmsData">
+  <a href="admin" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
+  <form>
+    <div class="form-group">
+      <label for="intro">Content Intro</label>
+      <input type="text" [(ngModel)]="cmsData.intro" class="form-control" id="intro" name="intro"
+             placeholder="Enter content intro" required>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary" (click)="submit()">
+      Submit
+    </button>
+    <p *ngIf="submitted">Toegevoegd!</p>
+  </form>
+</div>

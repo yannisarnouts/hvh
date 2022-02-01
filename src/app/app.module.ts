@@ -19,6 +19,8 @@ import { ContentPostComponent } from './components/content-post/content-post.com
 import { NomineesComponent } from './components/admin/nominees/nominees.component';
 import { NomineeDetailComponent } from './components/admin/nominee-detail/nominee-detail.component';
 import { NgxCaptchaModule } from "ngx-captcha";
+import { ContentCmsComponent } from './components/admin/content-cms/content-cms.component';
+import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { NgxCaptchaModule } from "ngx-captcha";
     SubmitContentComponent,
     ContentPostComponent,
     NomineesComponent,
-    NomineeDetailComponent
+    NomineeDetailComponent,
+    ContentCmsComponent,
+    HomeCmsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ import { NgxCaptchaModule } from "ngx-captcha";
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
 ],
   providers: [LoginActivate],
   bootstrap: [AppComponent]

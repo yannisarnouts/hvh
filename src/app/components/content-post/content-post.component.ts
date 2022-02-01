@@ -21,8 +21,9 @@ export class ContentPostComponent implements OnInit {
     if (this.contents.length > 0) {
       this.content = this.contents.find(c => c.id == id);
     } else {
-      this.contentService.getContent(id).subscribe(res => {
-        this.content = res;
+      console.log("get content from db")
+      this.contentService.getContent(id).then(res => {
+        this.content = res.data();
       });
     }
   }
