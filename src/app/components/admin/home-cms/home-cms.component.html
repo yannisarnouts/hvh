@@ -2,14 +2,16 @@
   <a href="admin" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
   <form>
     <div class="form-group">
+      <label for="homeTitle">Home Title</label>
+      <input type="text" [(ngModel)]="cmsData.homeTitle" class="form-control" id="homeTitle" name="homeTitle" required>
+    </div>
+    <div class="form-group">
       <label for="title">Home Subtitle</label>
-      <input type="text" [(ngModel)]="cmsData.homeSubtitle" class="form-control" id="title" name="title"
-             placeholder="Enter content intro" required>
+      <input type="text" [(ngModel)]="cmsData.homeSubtitle" class="form-control" id="title" name="title" required>
     </div>
     <div class="form-group">
       <label for="paragraph">Home Paragraph</label>
-      <textarea type="text" [(ngModel)]="cmsData.homeParagraph" class="form-control" id="paragraph" name="paragraph"
-                placeholder="Enter content intro" required></textarea>
+      <textarea type="text" [(ngModel)]="cmsData.homeParagraph" class="form-control" id="paragraph" name="paragraph" required></textarea>
     </div>
     <br/>
     <button type="submit" class="btn btn-primary" (click)="submit()">
