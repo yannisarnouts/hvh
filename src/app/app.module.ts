@@ -21,6 +21,7 @@ import { NomineeDetailComponent } from './components/admin/nominee-detail/nomine
 import { NgxCaptchaModule } from "ngx-captcha";
 import { ContentCmsComponent } from './components/admin/content-cms/content-cms.component';
 import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component';
+import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 
 @NgModule({
   declarations: [
@@ -49,8 +50,10 @@ import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
+    AngularFireAnalyticsModule
 ],
-  providers: [LoginActivate],
+  providers: [LoginActivate,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

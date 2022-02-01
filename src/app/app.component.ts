@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {NavigationEnd, Router} from "@angular/router";
+import {getAnalytics} from "@angular/fire/analytics";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ export class AppComponent implements OnInit {
   title = 'heldenHepdesk';
   showFooter = false;
 
-  constructor(private router: Router){}
+  constructor(private router: Router){
+    const analytics = getAnalytics();
+  }
 
   ngOnInit() {
     this.router.events.subscribe(res => {

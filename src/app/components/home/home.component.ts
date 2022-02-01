@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {NomineeService} from "../../services/nominee.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CmsService} from "../../services/cms.service";
+import {getAnalytics, logEvent} from "@angular/fire/analytics";
 
 export interface DialogData {
   firstname: string;
@@ -27,13 +28,14 @@ export class HomeComponent implements OnInit {
   motivation: string = "";
   showSuccess = false;
   showError = false;
-  cmsData: any;
+  cmsData: any; showIframe = false;
 
   constructor(private nomineeService: NomineeService, public dialog: MatDialog, private cmsService: CmsService) {
   }
 
   ngOnInit(): void {
     this.getCMSFromSessionStorage();
+    this.showIframe = navigator.userAgent.indexOf("Firefox") == -1;
   }
 
   getCMSData() {
@@ -55,6 +57,8 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog(): void {
+    const analytics = getAnalytics();
+    logEvent(analytics, 'notification_received');
     const dialogRef = this.dialog.open(NominateDialog, {
       width: '750px',
       data: {
