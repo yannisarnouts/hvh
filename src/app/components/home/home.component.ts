@@ -24,12 +24,14 @@ export class HomeComponent implements OnInit {
   email: string = "";
   phone: string = "";
   motivation: string = "";
-  showSuccess = false; showError = false;
-  nrTries = 0;
+  showSuccess = false;
+  showError = false;
 
-  constructor(private nomineeService: NomineeService, public dialog: MatDialog) {}
+  constructor(private nomineeService: NomineeService, public dialog: MatDialog) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 
   openDialog(): void {
@@ -46,26 +48,22 @@ export class HomeComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        if (this.nrTries <= 5) {
-          this.nrTries++;
-          this.nomineeService.getNominee(result.email).then(docSnapshot => {
-            if (!docSnapshot.exists) {
-              result.date = new Date();
-              this.nomineeService.createVote(result);
-              this.showSuccess = true;
-              return;
-            } else {
-              this.showError = true;
-            }
-          });
-        } else {
-          this.showError = true;
-        }
+        this.nomineeService.getNominee(result.email).then(docSnapshot => {
+          if (!docSnapshot.exists) {
+            result.date = new Date();
+            this.nomineeService.createVote(result);
+            this.showSuccess = true;
+            return;
+          } else {
+            this.showError = true;
+          }
+        });
       }
     });
   }
 
 }
+
 @Component({
   selector: 'nominate-dialog',
   templateUrl: 'nominateDialog.html',
@@ -74,10 +72,12 @@ export class NominateDialog {
   errorMessage = '';
   showError = false;
   recaptcha: any;
+
   constructor(
     public dialogRef: MatDialogRef<NominateDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
+  ) {
+  }
 
   disableForm() {
     if (this.data.firstname.length > 1 && this.data.lastname.length > 1 && this.data.company.length > 1 && this.data.email.length > 1 && this.data.phone.length > 1 && this.data.motivation.length > 1) {
@@ -96,7 +96,7 @@ export class NominateDialog {
         this.showError = false;
         return false;
       }
-    }  else {
+    } else {
       this.showError = false;
       return true;
     }

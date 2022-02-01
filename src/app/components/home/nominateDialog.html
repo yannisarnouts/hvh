@@ -22,7 +22,7 @@
   </div>
   <div class="form-group">
     <label for="motivation">Motivatie</label>
-    <textarea class="form-control" [(ngModel)]="data.motivation" id="motivation" placeholder="Motivatie" required></textarea>
+    <textarea class="form-control mb-3" [(ngModel)]="data.motivation" id="motivation" placeholder="Motivatie" required></textarea>
   </div>
   <ngx-recaptcha2 siteKey="6LekEjgeAAAAANJIS8fzz_k7N-SSkqvfTujeHICi" [(ngModel)]="recaptcha" required></ngx-recaptcha2>
   <div id="errMsg" class="alert alert-danger mt-3" *ngIf="showError">{{errorMessage}}</div>
