@@ -2,6 +2,16 @@
   <a href="admin" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
   <form>
     <div class="form-group">
+      <label for="title">Content Title</label>
+      <input type="text" [(ngModel)]="cmsData.contentTitle" class="form-control" id="title" name="title"
+             placeholder="Enter content intro" required>
+    </div>
+    <div class="form-group">
+      <label for="contentSubtitle">Content Subtitle</label>
+      <input type="text" [(ngModel)]="cmsData.contentSubtitle" class="form-control" id="contentSubtitle" name="contentSubtitle"
+             placeholder="Enter content intro" required>
+    </div>
+    <div class="form-group">
       <label for="intro">Content Intro</label>
       <input type="text" [(ngModel)]="cmsData.intro" class="form-control" id="intro" name="intro"
              placeholder="Enter content intro" required>
