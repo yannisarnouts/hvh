@@ -1,11 +1,11 @@
 <section id="heroContent" class="d-flex align-items-center hero">
 
-  <div class="container">
+  <div class="container" *ngIf="cmsData">
     <div class="row">
       <div class="col-lg-4 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
         <h1 style="color: #3a3a3a">Helden van de Helpdesk</h1>
         <h2>Content pagina</h2>
-        <p>Dit is de intro</p>
+        <p>{{cmsData.intro}}</p>
       </div>
       <div class="col-lg-8 order-1 order-lg-2 hero-img">
         <img

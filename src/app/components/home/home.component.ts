@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {NomineeService} from "../../services/nominee.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {CmsService} from "../../services/cms.service";
 
 export interface DialogData {
   firstname: string;
@@ -26,13 +27,32 @@ export class HomeComponent implements OnInit {
   motivation: string = "";
   showSuccess = false;
   showError = false;
+  cmsData: any;
 
-  constructor(private nomineeService: NomineeService, public dialog: MatDialog) {
+  constructor(private nomineeService: NomineeService, public dialog: MatDialog, private cmsService: CmsService) {
   }
 
   ngOnInit(): void {
+    this.getCMSFromSessionStorage();
   }
 
+  getCMSData() {
+    this.cmsService.getCMS("homeCMS").then(docSnapshot => {
+      this.cmsData = docSnapshot.data();
+      sessionStorage.setItem('homeCMS', JSON.stringify(this.cmsData));
+    });
+  }
+
+  getCMSFromSessionStorage() {
+    let contentsString = '';
+    if (sessionStorage.getItem('homeCMS') !== null) {
+      // @ts-ignore
+      contentsString = sessionStorage.getItem('homeCMS');
+      this.cmsData = JSON.parse(contentsString);
+    } else {
+      this.getCMSData();
+    }
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NominateDialog, {

@@ -21,15 +21,10 @@
     </div>
   </div>
 </section><!-- End Hero -->
-<div class="container">
+<div class="container" *ngIf="cmsData">
   <div class="row shared-benefitItems">
-    <h2 style="font-weight: bold">Geschikt voor elke afdeling</h2>
-    <p>Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de
-      standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters
-      nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar
-      is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair
-      geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop
-      publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.</p>
+    <h2 style="font-weight: bold">{{cmsData.homeSubtitle}}</h2>
+    <p>{{cmsData.homeParagraph}}</p>
     <div class="col-lg-12 p-5 mt-2 pt-lg-0 order-2 order-lg-1 d-flex justify-content-center">
       <button href="#about" class="btn-get-started scrollto" mat-raised-button (click)="openDialog()">Nomineer jouw held</button>
     </div>
