@@ -26,8 +26,7 @@ export class FinalistsComponent implements OnInit {
       // @ts-ignore
       contentsString = sessionStorage.getItem('finalists');
       this.finalists = JSON.parse(contentsString);
-      this.publicFinalists = this.finalists.filter(f => f.category === 'public');
-      this.privateFinalists = this.finalists.filter(f => f.category === 'private');
+      this.filterFinalists();
     } else {
       this.getFinalists();
     }
@@ -40,10 +39,13 @@ export class FinalistsComponent implements OnInit {
         cont.fullDate = new Date();
         this.finalists.push(cont);
       });
-      this.publicFinalists = this.finalists.filter(f => f.category === 'public');
-      this.privateFinalists = this.finalists.filter(f => f.category === 'private');
+      this.filterFinalists();
       sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
     });
+  }
+  filterFinalists() {
+    this.publicFinalists = this.finalists.filter(f => f.category === 'public');
+    this.privateFinalists = this.finalists.filter(f => f.category === 'private');
   }
 
   openDialog(vote: any): void {
@@ -56,6 +58,7 @@ export class FinalistsComponent implements OnInit {
         voterEmail: this.voterEmail,
       },
     });
+    // TODO: Fix vote once
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         this.finalistService.getVote(result.voterEmail).then(docSnapshot => {
@@ -94,19 +97,20 @@ export class VoteDialog {
   ) {
   }
 
+  // TODO: Fix recaptcha
   disableForm() {
     if (this.data.voterEmail && this.data.voterEmail.length > 1) {
       if (!this.data.voterEmail.match(/^.+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.voterEmail.length < 6) {
         this.errorMessage = "E-mail adres is niet geldig";
         this.showError = true;
         return true;
+      } else if (this.recaptcha == undefined) {
+        this.errorMessage = "Vink reCAPTCHA aan";
+        return true;
       } else {
         this.showError = false;
         return false;
       }
-    } else if (this.recaptcha == undefined) {
-      this.errorMessage = "Vink reCAPTCHA aan";
-      return true;
     } else {
       this.showError = false;
       return true;
