@@ -26,7 +26,7 @@
   <div class="container post-text">
     <div class="row">
       <div class="col-12 offset-lg-1 col-lg-9 col-xl-8">
-        {{content.intro}}
+        <b>{{content.intro}}</b>
       </div>
     </div>
   </div>
@@ -35,8 +35,13 @@
     <div class="row">
       <div class="col-12 offset-lg-1 col-lg-9 col-xl-8">
         <div *ngFor="let subcontent of content.subcontents">
-          <h2>{{subcontent.title}}</h2>
+          <h2 *ngIf="subcontent.title">{{subcontent.title}}</h2>
           <p [innerHTML]="subcontent.html"></p>
+          <figure *ngIf="subcontent.img" class="text-center">
+            <img src="{{subcontent.img}}" alt="{{subcontent.img}}" style="max-width: 100%;"
+                 alt="Elephant at sunset">
+            <figcaption *ngIf="subcontent.imgDesc" class="image_caption">{{subcontent.imgDesc}}</figcaption>
+          </figure>
         </div>
       </div>
     </div>

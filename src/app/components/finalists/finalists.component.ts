@@ -31,7 +31,6 @@ export class FinalistsComponent implements OnInit {
     }
   }
   getFinalists() {
-    console.log("GET FROM DB");
     this.finalistService.getFinalists().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {
         let cont: any = doc.data();
@@ -39,7 +38,6 @@ export class FinalistsComponent implements OnInit {
         cont.fullDate = new Date();
         this.finalists.push(cont);
       });
-      console.log(this.finalists);
       this.publicFinalists = this.finalists.filter(f => f.category === 'public');
       this.privateFinalists = this.finalists.filter(f => f.category === 'private');
       sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
@@ -47,7 +45,6 @@ export class FinalistsComponent implements OnInit {
   }
 
   openDialog(vote: any): void {
-    console.log(vote);
     const dialogRef = this.dialog.open(VoteDialog, {
       width: '750px',
       data: {

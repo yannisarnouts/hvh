@@ -34,13 +34,21 @@
     </div>
     <div *ngFor="let subContent of subContents; let i = index;">
       <div class="form-group">
-        <label for="subtitle">Subtitel({{i+1}})*</label>
+        <label for="subtitle">Subtitel({{i+1}})</label>
         <input type="text" [(ngModel)]="subContent.title" class="form-control" id="subtitle" name="subtitle"
                placeholder="Enter article name" required>
       </div>
       <div class="form-group">
         <label for="subhtml">Html({{i+1}})*</label>
         <textarea [(ngModel)]="subContent.html" class="form-control" id="subhtml" name="subhtml"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="subimg">Image URL({{i+1}})</label>
+        <input type="text" [(ngModel)]="subContent.img" class="form-control" id="subimg" name="subimg">
+      </div>
+      <div class="form-group">
+        <label for="subimgDesc">Image Description({{i+1}})</label>
+        <input type="text" [(ngModel)]="subContent.imgDesc" class="form-control" id="subimgDesc" name="subimgDesc">
       </div>
     </div>
     <div class="form-group">

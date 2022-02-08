@@ -5,3 +5,10 @@
   height: 40vh;
   background: linear-gradient(0deg,#b7ebe7,#b7ebe7) no-repeat,linear-gradient(to bottom right,#b7ebe7 49%,transparent 50%) no-repeat;
 }
+.image_caption {
+  margin: 0 auto;
+  padding-top: 12px;
+  opacity: .7;
+  font-style: italic;
+  font-size: 14px;
+}
