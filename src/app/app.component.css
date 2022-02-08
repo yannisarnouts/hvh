@@ -52,6 +52,11 @@ a.button-small-white-border {
   text-align: center;
   text-decoration: none;
 }
+.subheading {
+  font-family: "Bree Serif Light", serif;
+  font-size: 26px;
+  color: #3a3a3a;
+}
 #CTA_Header {
   position: relative;
   top: -2px;
