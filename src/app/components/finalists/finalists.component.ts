@@ -69,7 +69,6 @@ export class FinalistsComponent implements OnInit {
             this.showSuccess = false;
           }
         });
-        // console.log(result.voterEmail + " voted for " + result.firstname + " from company " + result.company);
       }
     });
   }
