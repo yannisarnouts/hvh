@@ -22,12 +22,13 @@ import { NgxCaptchaModule } from "ngx-captcha";
 import { ContentCmsComponent } from './components/admin/content-cms/content-cms.component';
 import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component';
 import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
-import { FinalistsComponent } from './components/finalists/finalists.component';
+import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NominateDialog,
+    VoteDialog,
     AdminLoginComponent,
     HomeComponent,
     AdminPanelComponent,

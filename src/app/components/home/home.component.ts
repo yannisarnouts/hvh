@@ -113,7 +113,7 @@ export class NominateDialog {
         this.showError = true;
         return true;
       } else if (this.recaptcha == undefined) {
-        this.errorMessage = "Vinnk reCAPTCHA aan";
+        this.errorMessage = "Vink reCAPTCHA aan";
         return true;
       } else {
         this.showError = false;
