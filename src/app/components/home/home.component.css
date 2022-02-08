@@ -11,6 +11,12 @@
   background: url(../../../assets/linkedinVideo.jfif) no-repeat;
   background-size: 100%;
 }
+.videoSource {
+  position: relative;
+  display: table;
+  width: 896px;
+  margin: 0 auto;
+}
 @media (max-width: 768px) {
   .video {
     width: 320px;

@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {NomineeService} from "../../services/nominee.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CmsService} from "../../services/cms.service";
-import {getAnalytics, logEvent} from "@angular/fire/analytics";
+import {environment} from "../../../environments/environment.prod";
 
 export interface DialogData {
   firstname: string;
@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   showSuccess = false;
   showError = false;
   cmsData: any; showIframe = false;
+  env = environment;
 
   constructor(private nomineeService: NomineeService, public dialog: MatDialog, private cmsService: CmsService) {
   }
@@ -57,8 +58,6 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog(): void {
-    const analytics = getAnalytics();
-    logEvent(analytics, 'notification_received');
     const dialogRef = this.dialog.open(NominateDialog, {
       width: '750px',
       data: {
