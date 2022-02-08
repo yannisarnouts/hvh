@@ -5,3 +5,4 @@
   background-position: top,100% 78px;
   background-size: 100% 78px,100% 36px;
 }
+#cardTitle {overflow:hidden; white-space: nowrap;}

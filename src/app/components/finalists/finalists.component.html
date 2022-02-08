@@ -34,6 +34,13 @@
   <div class="container">
     <div class="row">
       <h2>Categorie: Publieke sector</h2>
+      <div *ngIf="successVisible">
+        <div id="errMsg" class="alert alert-danger mt-3" *ngIf="!showSuccess">Opgelet, u kan maar 1 keer
+          stemmen!
+        </div>
+        <div id="successMsg" class="alert alert-success mt-3" *ngIf="showSuccess">Gelukt! Uw stem werd doorgegeven.
+        </div>
+      </div>
       <div class="col-12 col-md-6 col-xl-4 card-column pb-3" *ngFor="let finalist of publicFinalists">
         <div class="card border-2 h-100">
           <!-- card-header -->

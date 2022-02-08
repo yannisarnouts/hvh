@@ -11,6 +11,8 @@ export class FinalistsComponent implements OnInit {
   firstname: string = "";
   finalists = new Array(); publicFinalists = new Array(); privateFinalists = new Array();
   voterEmail = '';
+  showSuccess = false;
+  successVisible = false;
 
   constructor(private finalistService: FinalistService, public dialog: MatDialog) { }
 
@@ -56,7 +58,18 @@ export class FinalistsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        console.log(result.voterEmail + " voted for " + result.firstname + " from company " + result.company);
+        this.finalistService.getVote(result.voterEmail).then(docSnapshot => {
+          this.successVisible = true;
+          if (!docSnapshot.exists) {
+            result.date = new Date();
+            this.finalistService.createVote(result);
+            this.showSuccess = true;
+            return;
+          } else {
+            this.showSuccess = false;
+          }
+        });
+        // console.log(result.voterEmail + " voted for " + result.firstname + " from company " + result.company);
       }
     });
   }

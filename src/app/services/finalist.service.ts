@@ -11,4 +11,14 @@ export class FinalistService {
   getFinalists() {
     return this.fs.collection("finalists").get();
   }
+  getVote(email: string) {
+    return this.fs.firestore.doc('nominees/' + email).get();
+  }
+  createVote(data: any) {
+    return new Promise<any>((resolve, reject) => {
+      this.fs.collection("finalistVotes").doc(data.voterEmail)
+        .set(data)
+        .then(res => {}, err => reject(err));
+    });
+  }
 }

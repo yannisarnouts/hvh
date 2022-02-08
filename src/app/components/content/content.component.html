@@ -31,11 +31,13 @@
             </a>
             <!-- card-body -->
             <div class="card-body">
+              <div id="cardTitle">
               <a href="/content/{{content.id}}">
-                <h3 class="card-title">{{content.title}}</h3>
+                <p class="card-title">{{content.title.substring(0, 52)}} ...</p>
               </a>
+              </div>
               <div>
-                <p>{{content.bannerIntro}}</p>
+                <p>{{content.bannerIntro.substring(0, 140)}}</p>
                 <p>...<a class="card-readmore" href="/content/{{content.id}}">
                   Read more                </a></p>
               </div>
