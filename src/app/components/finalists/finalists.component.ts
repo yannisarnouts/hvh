@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FinalistService} from "../../services/finalist.service";
+import {docChanges} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-finalists',
@@ -9,12 +10,15 @@ import {FinalistService} from "../../services/finalist.service";
 })
 export class FinalistsComponent implements OnInit {
   firstname: string = "";
-  finalists = new Array(); publicFinalists = new Array(); privateFinalists = new Array();
+  finalists = new Array();
+  publicFinalists = new Array();
+  privateFinalists = new Array();
   voterEmail = '';
   showSuccess = false;
   successVisible = false;
 
-  constructor(private finalistService: FinalistService, public dialog: MatDialog) { }
+  constructor(private finalistService: FinalistService, public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.getFinalistsFromSessionStorage();
@@ -31,6 +35,7 @@ export class FinalistsComponent implements OnInit {
       this.getFinalists();
     }
   }
+
   getFinalists() {
     this.finalistService.getFinalists().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {
@@ -43,6 +48,7 @@ export class FinalistsComponent implements OnInit {
       sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
     });
   }
+
   filterFinalists() {
     this.publicFinalists = this.finalists.filter(f => f.category === 'public');
     this.privateFinalists = this.finalists.filter(f => f.category === 'private');
@@ -56,17 +62,17 @@ export class FinalistsComponent implements OnInit {
         lastname: vote.lastname,
         company: vote.company,
         voterEmail: this.voterEmail,
-        id: vote.id,
+        finalistId: vote.id,
+        category: vote.category
       },
     });
     // TODO: Fix vote once
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.finalistService.getVote(result.voterEmail).then(docSnapshot => {
+        this.finalistService.getVote(result.voterEmail, result.category).then(docSnapshot => {
           this.successVisible = true;
           if (!docSnapshot.exists) {
             result.date = new Date();
-            result.finalistId = result.id;
             this.finalistService.createVote(result);
             this.showSuccess = true;
             return;
@@ -78,12 +84,14 @@ export class FinalistsComponent implements OnInit {
     });
   }
 }
+
 export interface VoteDialogData {
   firstname: string;
   lastname: string;
   company: string,
   voterEmail: string,
 }
+
 @Component({
   selector: 'vote-dialog',
   templateUrl: 'voteDialog.html',
@@ -106,10 +114,12 @@ export class VoteDialog {
         this.errorMessage = "E-mail adres is niet geldig";
         this.showError = true;
         return true;
-      } else if (this.recaptcha == undefined) {
-        this.errorMessage = "Vink reCAPTCHA aan";
-        return true;
-      } else {
+      }
+      // else if (this.recaptcha == undefined) {
+      //   this.errorMessage = "Vink reCAPTCHA aan";
+      //   return true;
+      // }
+      else {
         this.showError = false;
         return false;
       }

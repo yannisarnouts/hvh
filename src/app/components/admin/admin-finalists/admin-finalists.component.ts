@@ -64,7 +64,7 @@ export class AdminFinalistsComponent implements OnInit {
     }
   }
   exportAsXSLX() {
-    this.excelService.exportAsExcelFile(this.finalists, 'nominees');
+    this.excelService.exportAsExcelFile(this.finalists, 'finalists');
   }
 
 }

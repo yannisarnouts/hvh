@@ -14,12 +14,12 @@ export class FinalistService {
   getFinalistVotes() {
     return this.fs.collection("finalistVotes").get();
   }
-  getVote(email: string) {
-    return this.fs.firestore.doc('finalistVotes/' + email).get();
+  getVote(email: string, category: string) {
+    return this.fs.firestore.doc('finalistVotes/' + email + '_' + category).get();
   }
   createVote(data: any) {
     return new Promise<any>((resolve, reject) => {
-      this.fs.collection("finalistVotes").doc(data.voterEmail)
+      this.fs.collection("finalistVotes").doc(data.voterEmail + '_' + data.category)
         .set(data)
         .then(res => {}, err => reject(err));
     });
