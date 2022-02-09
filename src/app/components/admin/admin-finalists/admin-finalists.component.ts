@@ -63,6 +63,9 @@ export class AdminFinalistsComponent implements OnInit {
         }
       }
     }
+    this.finalists.sort((a, b) => {
+      return b.votes.length - a.votes.length;
+    });
     sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
   }
   exportAsXSLX() {
