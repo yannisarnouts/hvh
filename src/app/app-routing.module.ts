@@ -12,6 +12,7 @@ import {NomineeDetailComponent} from "./components/admin/nominee-detail/nominee-
 import {ContentCmsComponent} from "./components/admin/content-cms/content-cms.component";
 import {HomeCmsComponent} from "./components/admin/home-cms/home-cms.component";
 import {FinalistsComponent} from "./components/finalists/finalists.component";
+import {AdminFinalistsComponent} from "./components/admin/admin-finalists/admin-finalists.component";
 
 @Injectable()
 export class LoginActivate implements CanActivate {
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'admin/nominees/:id', component: NomineeDetailComponent, canActivate: [LoginActivate]},
   {path: 'admin/contentCMS', component: ContentCmsComponent, canActivate: [LoginActivate]},
   {path: 'admin/homeCMS', component: HomeCmsComponent, canActivate: [LoginActivate]},
+  {path: 'admin/finalisten', component: AdminFinalistsComponent, canActivate: [LoginActivate]},
 ];
 
 @NgModule({

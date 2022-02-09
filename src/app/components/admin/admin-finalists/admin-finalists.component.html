@@ -1,0 +1,25 @@
+<div class="container pt-3">
+  <a href="admin" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
+  <button class="btn btn-secondary" (click)="exportAsXSLX()">Download as Excel</button>
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name Finalist</th>
+      <th scope="col">Company Finalist</th>
+      <th scope="col">Motivation</th>
+      <th scope="col"># votes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let finalist of finalists; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{finalist.firstname}} {{finalist.lastname}}</td>
+      <td>{{finalist.company}}</td>
+      <td>{{finalist.motivation.substring(0, 70)}} ...</td>
+      <td>1</td>
+      <td><a href="admin/finalist/{{finalist.id}}" class="btn btn-primary">Meer info</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

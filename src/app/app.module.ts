@@ -23,6 +23,7 @@ import { ContentCmsComponent } from './components/admin/content-cms/content-cms.
 import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component';
 import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.component';
+import { AdminFinalistsComponent } from './components/admin/admin-finalists/admin-finalists.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.c
     NomineeDetailComponent,
     ContentCmsComponent,
     HomeCmsComponent,
-    FinalistsComponent
+    FinalistsComponent,
+    AdminFinalistsComponent
   ],
   imports: [
     BrowserModule,
