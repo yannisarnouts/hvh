@@ -56,6 +56,7 @@ export class FinalistsComponent implements OnInit {
         lastname: vote.lastname,
         company: vote.company,
         voterEmail: this.voterEmail,
+        id: vote.id,
       },
     });
     // TODO: Fix vote once
@@ -65,6 +66,7 @@ export class FinalistsComponent implements OnInit {
           this.successVisible = true;
           if (!docSnapshot.exists) {
             result.date = new Date();
+            result.finalistId = result.id;
             this.finalistService.createVote(result);
             this.showSuccess = true;
             return;

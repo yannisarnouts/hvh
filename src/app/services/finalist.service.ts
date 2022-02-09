@@ -11,6 +11,9 @@ export class FinalistService {
   getFinalists() {
     return this.fs.collection("finalists").get();
   }
+  getFinalistVotes() {
+    return this.fs.collection("finalistVotes").get();
+  }
   getVote(email: string) {
     return this.fs.firestore.doc('finalistVotes/' + email).get();
   }
