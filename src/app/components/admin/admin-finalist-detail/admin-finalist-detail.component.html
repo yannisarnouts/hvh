@@ -1,0 +1,33 @@
+<div class="container pt-3">
+  <a href="admin/finalisten" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
+  <form>
+    <div class="form-group">
+      <label for="firstname">Voornaam finalist</label>
+      <input type="text" [(ngModel)]="finalist.firstname" class="form-control" id="firstname" name="firstname" readonly>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Achternaam finalist</label>
+      <input type="text" [(ngModel)]="finalist.lastname" class="form-control" id="lastname" name="lastname" readonly>
+    </div>
+    <div class="form-group">
+      <label for="category">Categorie</label>
+      <textarea [(ngModel)]="finalist.category" class="form-control" id="category" name="category" readonly></textarea>
+    </div>
+    <div class="form-group">
+      <label for="company">Bedrijf</label>
+      <input type="text" [(ngModel)]="finalist.company" class="form-control" id="company" name="company" readonly>
+    </div>
+    <div class="form-group">
+      <label for="motivation">Motivation</label>
+      <textarea [(ngModel)]="finalist.motivation" class="form-control" id="motivation" name="motivation" readonly></textarea>
+    </div>
+  </form>
+  <br/>
+  <h1>{{finalist.votes.length}} stemmen ontvangen</h1>
+  <span>Stemmen gekregen van:</span>
+  <ol>
+    <li *ngFor="let n of finalist.votes">
+      {{n.voterEmail}}
+    </li>
+  </ol>
+</div>

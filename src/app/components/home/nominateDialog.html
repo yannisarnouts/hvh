@@ -26,6 +26,8 @@
   </div>
   <ngx-recaptcha2 siteKey="6LekEjgeAAAAANJIS8fzz_k7N-SSkqvfTujeHICi" [(ngModel)]="recaptcha" required></ngx-recaptcha2>
   <div id="errMsg" class="alert alert-danger mt-3" *ngIf="showError">{{errorMessage}}</div>
-    <button type="submit" [mat-dialog-close]="data" class="btn mt-4 btn-get-started" [disabled]="disableForm()">Nomineer jouw held</button>
+  <button type="submit" [mat-dialog-close]="data" class="btn btn-get-started scrollto pl-5 pr-5 pt-2 pb-2 mt-4" [disabled]="disableForm()">Nomineer jouw
+    held
+  </button>
   <br/><br/><br/>
 </div>

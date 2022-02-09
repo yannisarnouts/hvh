@@ -7,6 +7,7 @@
       <th scope="col">#</th>
       <th scope="col">Name Finalist</th>
       <th scope="col">Company Finalist</th>
+      <th scope="col">Category</th>
       <th scope="col">Motivation</th>
       <th scope="col"># votes</th>
     </tr>
@@ -16,9 +17,10 @@
       <th scope="row">{{i + 1}}</th>
       <td>{{finalist.firstname}} {{finalist.lastname}}</td>
       <td>{{finalist.company}}</td>
+      <td>{{finalist.category}}</td>
       <td>{{finalist.motivation.substring(0, 70)}} ...</td>
-      <td>{{finalist.votes.length}}</td>
-      <td><a href="admin/finalist/{{finalist.id}}" class="btn btn-primary">Meer info</a></td>
+      <td *ngIf="finalist.votes">{{finalist.votes.length}}</td>
+      <td><a href="admin/finalisten/{{finalist.id}}" class="btn btn-primary">Meer info</a></td>
     </tr>
     </tbody>
   </table>

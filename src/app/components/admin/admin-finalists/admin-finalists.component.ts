@@ -56,15 +56,16 @@ export class AdminFinalistsComponent implements OnInit {
   }
   combineVotesToFinalist() {
     for (let i = 0; i<this.finalists.length; i++) {
+      this.finalists[i].votes = [];
       for (let vote of this.votes) {
         if (vote.finalistId === this.finalists[i].id) {
           this.finalists[i].votes.push(vote);
         }
       }
     }
+    sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
   }
   exportAsXSLX() {
     this.excelService.exportAsExcelFile(this.finalists, 'finalists');
   }
-
 }

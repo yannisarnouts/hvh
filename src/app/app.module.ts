@@ -24,6 +24,7 @@ import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component
 import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.component';
 import { AdminFinalistsComponent } from './components/admin/admin-finalists/admin-finalists.component';
+import { AdminFinalistDetailComponent } from './components/admin/admin-finalist-detail/admin-finalist-detail.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AdminFinalistsComponent } from './components/admin/admin-finalists/admi
     ContentCmsComponent,
     HomeCmsComponent,
     FinalistsComponent,
-    AdminFinalistsComponent
+    AdminFinalistsComponent,
+    AdminFinalistDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -42,6 +42,7 @@ export class FinalistsComponent implements OnInit {
         let cont: any = doc.data();
         cont.id = doc.id;
         cont.fullDate = new Date();
+        cont.votes = [];
         this.finalists.push(cont);
       });
       this.filterFinalists();
