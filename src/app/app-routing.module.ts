@@ -36,7 +36,6 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'content', component: ContentComponent},
   {path: 'content/:id', component: ContentPostComponent},
-  {path: 'finalisten', component: FinalistsComponent},
   {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]},
   {path: 'admin/submitContent', component: SubmitContentComponent, canActivate: [LoginActivate]},
   {path: 'admin/nominees', component: NomineesComponent, canActivate: [LoginActivate]},

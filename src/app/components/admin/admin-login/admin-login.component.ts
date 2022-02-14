@@ -12,9 +12,18 @@ export class AdminLoginComponent implements OnInit {
   password = '';
   public errorMessage = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit(): void {
+    this.IsLoggedIn();
+  }
+
+  async IsLoggedIn() {
+    const loggedIn = await this.authService.isLoggedIn();
+    if (loggedIn) {
+      this.router.navigate(['admin']);
+    }
   }
 
   signIn() {
