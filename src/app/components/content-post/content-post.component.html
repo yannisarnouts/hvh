@@ -1,12 +1,12 @@
-<section id="heroContentPost" class="hero" style="margin-top: -3rem">
+<section id="heroContentPost" class="hero mb-5" style="margin-top: -3rem;">
   <div *ngIf="content">
     <div class="container pt-3">
       <h1>{{content.title}}</h1>
     </div>
-    <div class="container">
+    <div class="container hero-img">
       <img *ngIf="content.img"
-        src="{{content.img}}"  style="max-height: 300px"
-        alt="{{content.title}} banner" title="{{content.title}} banner">
+           src="{{content.img}}" style="max-height: 300px"
+           alt="{{content.title}} banner" title="{{content.title}} banner">
     </div>
   </div>
 </section>
