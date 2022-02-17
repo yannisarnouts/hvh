@@ -14,6 +14,7 @@ import {HomeCmsComponent} from "./components/admin/home-cms/home-cms.component";
 import {FinalistsComponent} from "./components/finalists/finalists.component";
 import {AdminFinalistsComponent} from "./components/admin/admin-finalists/admin-finalists.component";
 import {AdminFinalistDetailComponent} from "./components/admin/admin-finalist-detail/admin-finalist-detail.component";
+import {AdminContentListComponent} from "./components/admin/admin-content-list/admin-content-list.component";
 
 @Injectable()
 export class LoginActivate implements CanActivate {
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'content/:id', component: ContentPostComponent},
   {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]},
   {path: 'admin/submitContent', component: SubmitContentComponent, canActivate: [LoginActivate]},
+  {path: 'admin/contentList', component: AdminContentListComponent, canActivate: [LoginActivate]},
   {path: 'admin/nominees', component: NomineesComponent, canActivate: [LoginActivate]},
   {path: 'admin/nominees/:id', component: NomineeDetailComponent, canActivate: [LoginActivate]},
   {path: 'admin/contentCMS', component: ContentCmsComponent, canActivate: [LoginActivate]},

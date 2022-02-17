@@ -25,6 +25,7 @@ import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.component';
 import { AdminFinalistsComponent } from './components/admin/admin-finalists/admin-finalists.component';
 import { AdminFinalistDetailComponent } from './components/admin/admin-finalist-detail/admin-finalist-detail.component';
+import { AdminContentListComponent } from './components/admin/admin-content-list/admin-content-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdminFinalistDetailComponent } from './components/admin/admin-finalist-
     HomeCmsComponent,
     FinalistsComponent,
     AdminFinalistsComponent,
-    AdminFinalistDetailComponent
+    AdminFinalistDetailComponent,
+    AdminContentListComponent
   ],
   imports: [
     BrowserModule,

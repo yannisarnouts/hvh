@@ -19,4 +19,8 @@ export class ContentService {
   getContent(id: string) {
     return this.fs.firestore.doc('contents/' + id).get();
   }
+
+  deleteContent(id: string) {
+    return this.fs.firestore.doc('contents/' + id).delete();
+  }
 }
