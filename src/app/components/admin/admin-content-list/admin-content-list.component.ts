@@ -29,6 +29,13 @@ export class AdminContentListComponent implements OnInit {
     });
   }
 
+  editPost(id: string) {
+    let editContent = this.contents.find(c => c.id === id);
+    sessionStorage.setItem('editContent', JSON.stringify(editContent));
+    location.replace("/admin/editContent/" + id);
+    // href="/admin/editContent/{{content.id}}"
+  }
+
   deletePost(id: string) {
     var doDelete = confirm("Delete content post?");
     if (doDelete) {

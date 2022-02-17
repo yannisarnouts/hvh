@@ -1,22 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {Content} from "../submit-content/submit-content.component";
 import {ContentService} from "../../../services/content.service";
 
-export interface Content {
-  title: string;
-  author: string;
-  topic: string;
-  bannerIntro: string;
-  intro: string;
-  date: string;
-  subcontents: any[];
-  img: string;
-}
 @Component({
-  selector: 'app-submit-content',
-  templateUrl: './submit-content.component.html',
-  styleUrls: ['./submit-content.component.css']
+  selector: 'app-edit-content',
+  templateUrl: './edit-content.component.html',
+  styleUrls: ['./edit-content.component.css']
 })
-export class SubmitContentComponent implements OnInit {
+export class EditContentComponent implements OnInit {
   content: Content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: ''};
   subContents = new Array();
   submitted = false;
@@ -25,14 +16,21 @@ export class SubmitContentComponent implements OnInit {
   constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('editContent') !== null) {
+      let contentsString = sessionStorage.getItem('editContent');
+      // @ts-ignore
+      this.content = JSON.parse(contentsString);
+      console.log(this.content);
+    } else {
+      location.replace("/admin/contentList");
+    }
   }
 
   createContent() {
     this.content.subcontents = this.subContents;
     this.subContents = [];
-    this.contentService.createContent(this.content).then(() => {
-      this.submitted = true;
-      this.content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: ''};
+    this.contentService.editContent(this.content).then(() => {
+      location.replace("/admin/contentList");
     });
   }
 
@@ -42,5 +40,4 @@ export class SubmitContentComponent implements OnInit {
       this.subContents[i] = {title: '', html: '', nr: i+1};
     }
   }
-
 }

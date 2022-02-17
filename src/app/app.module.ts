@@ -26,6 +26,7 @@ import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.c
 import { AdminFinalistsComponent } from './components/admin/admin-finalists/admin-finalists.component';
 import { AdminFinalistDetailComponent } from './components/admin/admin-finalist-detail/admin-finalist-detail.component';
 import { AdminContentListComponent } from './components/admin/admin-content-list/admin-content-list.component';
+import { EditContentComponent } from './components/admin/edit-content/edit-content.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AdminContentListComponent } from './components/admin/admin-content-list
     FinalistsComponent,
     AdminFinalistsComponent,
     AdminFinalistDetailComponent,
-    AdminContentListComponent
+    AdminContentListComponent,
+    EditContentComponent
   ],
   imports: [
     BrowserModule,

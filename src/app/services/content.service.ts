@@ -12,6 +12,11 @@ export class ContentService {
     return this.fs.collection("contents").add(content);
   }
 
+  editContent(content: any): any {
+    console.log(content);
+    return this.fs.firestore.doc('contents/' + content.id).update(content);
+  }
+
   getContents() {
     return this.fs.collection("contents").get();
   }
