@@ -7,6 +7,7 @@
       <img *ngIf="content.img"
            src="{{content.img}}" style="max-height: 300px"
            alt="{{content.title}} banner" title="{{content.title}} banner">
+      <img style="max-height: 300px" *ngIf="!content.img"  src="../../../assets/hvhLanding.jpg" alt="Digital self-service" loading="lazy">
     </div>
   </div>
 </section>
