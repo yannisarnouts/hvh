@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Content} from "../submit-content/submit-content.component";
 import {ContentService} from "../../../services/content.service";
 
@@ -13,14 +13,16 @@ export class EditContentComponent implements OnInit {
   submitted = false;
   nrTitles = 0;
 
-  constructor(private contentService: ContentService) { }
+  constructor(private contentService: ContentService) {
+  }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('editContent') !== null) {
       let contentsString = sessionStorage.getItem('editContent');
       // @ts-ignore
       this.content = JSON.parse(contentsString);
-      console.log(this.content);
+      this.subContents = this.content.subcontents;
+      this.nrTitles = this.subContents.length;
     } else {
       location.replace("/admin/contentList");
     }
@@ -33,7 +35,6 @@ export class EditContentComponent implements OnInit {
       location.replace("/admin/contentList");
     });
   }
-
   addSubcontents() {
     this.subContents = [];
     for (let i = 0; i < this.nrTitles; i++) {

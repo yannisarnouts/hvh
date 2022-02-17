@@ -1,6 +1,7 @@
 <div class="container pt-3">
   <a href="admin/contentList" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
   <form>
+    <h1 class="pt-2">Main content</h1>
     <div class="form-group">
       <label for="title">Titel*</label>
       <input type="text" [(ngModel)]="content.title" class="form-control" id="title" name="title"
@@ -23,6 +24,7 @@
       <label for="intro">Intro* (intro tekst in de content pagina)</label>
       <textarea [(ngModel)]="content.intro" class="form-control" id="intro" name="intro"></textarea>
     </div>
+    <h1 class="pt-5">Subcontents</h1>
     <div class="form-group">
       <label for="nrTitles">Aantal paragrafen (dit gaat over het aantal subtitels en bijbehorende content)</label>
       <div class="input-group" style="width: 10vw">
@@ -35,6 +37,7 @@
     <div *ngFor="let subContent of subContents; let i = index;">
       <div class="form-group">
         <label for="subtitle">Subtitel({{i+1}})</label>
+        Title: {{subContent.title}}
         <input type="text" [(ngModel)]="subContent.title" class="form-control" id="subtitle" name="subtitle"
                placeholder="Enter article name" required>
       </div>
@@ -51,6 +54,7 @@
         <input type="text" [(ngModel)]="subContent.imgDesc" class="form-control" id="subimgDesc" name="subimgDesc">
       </div>
     </div>
+    <h1 class="pt-5">Extra info</h1>
     <div class="form-group">
       <label for="author">Auteur*</label><br/>
       <input type="text" [(ngModel)]="content.author" class="form-control" id="author" name="author"
