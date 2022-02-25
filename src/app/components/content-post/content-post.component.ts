@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ContentService} from "../../services/content.service";
+import {Meta} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-content-post',
@@ -10,7 +11,8 @@ import {ContentService} from "../../services/content.service";
 export class ContentPostComponent implements OnInit {
   content: any;
   contents = new Array();
-  constructor(private router: Router, private contentService: ContentService) { }
+
+  constructor(private router: Router, private contentService: ContentService, private metaService: Meta) { }
 
   ngOnInit(): void {
     this.getContentPosts();
@@ -21,7 +23,6 @@ export class ContentPostComponent implements OnInit {
     if (this.contents.length > 0) {
       this.content = this.contents.find(c => c.id == id);
     } else {
-      console.log("get content from db")
       this.contentService.getContent(id).then(res => {
         this.content = res.data();
       });
@@ -36,5 +37,12 @@ export class ContentPostComponent implements OnInit {
     }
     this.getContentPost();
   }
-
+  /*TODO*/
+  addTag() {
+    if (this.content.img) {
+      this.metaService.updateTag({ property: 'og:image', content: this.content.img });
+      this.metaService.updateTag({ name: 'image', content: this.content.img });
+      this.metaService.updateTag({ property: 'twitter:image', content: this.content.img });
+    }
+  }
 }

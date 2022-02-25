@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, Meta} from '@angular/platform-browser';
 import {AppRoutingModule, LoginActivate} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {environment} from "../environments/environment.prod";
@@ -63,7 +63,7 @@ import { EditContentComponent } from './components/admin/edit-content/edit-conte
     NgxCaptchaModule,
     AngularFireAnalyticsModule
 ],
-  providers: [LoginActivate,
+  providers: [LoginActivate, Meta
   ],
   bootstrap: [AppComponent]
 })

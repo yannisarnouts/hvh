@@ -14,13 +14,8 @@ export class AppComponent implements OnInit {
   title = 'heldenHepdesk';
   showFooter = false;
 
-  constructor(private router: Router, private meta: Meta){
+  constructor(private router: Router){
     const analytics = getAnalytics();
-    this.meta.addTags([
-      {name: 'description', content: 'Wedstrijd voor de helden van de helpdesk, mogelijk gemaakt door TOPdesk'} ,
-      {name: 'author', content: 'Yannis Arnouts'},
-      {name: 'keywords', content: 'heldenvandehelpdesk, helden, helpdesk, TOPdesk, wedstrijd'}
-    ])
   }
 
   ngOnInit() {

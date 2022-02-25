@@ -20,6 +20,9 @@
   img {
     height: 180px;
   }
+  video {
+    width: 200px;
+  }
 }
 #postTitle {
   font-family: 'bree-serif', 'Bree Serif', serif;
