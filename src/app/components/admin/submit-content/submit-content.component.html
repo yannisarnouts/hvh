@@ -53,6 +53,22 @@
         <input type="text" [(ngModel)]="subContent.imgDesc" class="form-control" id="subimgDesc" name="subimgDesc">
       </div>
     </div>
+    <h1 class="pt-5">SlideShow</h1>
+    <div class="form-group">
+      <label for="nrTitles">Aantal foto's</label>
+      <div class="input-group" style="width: 10vw">
+        <input type="number" [(ngModel)]="nrSlideShowImages" class="form-control" id="nrSlideShowImages"
+               name="nrSlideShowImages">
+        <button (click)="addSlideShowImages()" class="btn btn-secondary">OK</button>
+      </div>
+    </div>
+    <div *ngFor="let slideshowImage of slideshowImages; let i = index;">
+      <div class="form-group">
+        <label for="url">Image({{i+1}})</label>
+        <input type="text" [(ngModel)]="slideshowImage.url" class="form-control" id="url" name="url"
+               placeholder="URL" required>
+      </div>
+    </div>
     <h1 class="pt-5">Extra info</h1>
     <div class="form-group">
       <label for="author">Auteur*</label><br/>

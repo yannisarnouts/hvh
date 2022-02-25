@@ -10,6 +10,7 @@ export interface Content {
   date: string;
   subcontents: any[];
   img: string;
+  slideshowImages: any[];
 }
 @Component({
   selector: 'app-submit-content',
@@ -17,10 +18,11 @@ export interface Content {
   styleUrls: ['./submit-content.component.css']
 })
 export class SubmitContentComponent implements OnInit {
-  content: Content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: ''};
+  content: Content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: '', slideshowImages: []};
   subContents = new Array();
+  slideshowImages = new Array();
   submitted = false;
-  nrTitles = 0;
+  nrTitles = 0; nrSlideShowImages = 0;
 
   constructor(private contentService: ContentService) { }
 
@@ -29,10 +31,11 @@ export class SubmitContentComponent implements OnInit {
 
   createContent() {
     this.content.subcontents = this.subContents;
+    this.content.slideshowImages = this.slideshowImages;
     this.subContents = [];
     this.contentService.createContent(this.content).then(() => {
       this.submitted = true;
-      this.content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: ''};
+      this.content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: '', slideshowImages: []};
     });
   }
 
@@ -40,6 +43,12 @@ export class SubmitContentComponent implements OnInit {
     this.subContents = [];
     for (let i = 0; i < this.nrTitles; i++) {
       this.subContents[i] = {title: '', html: '', nr: i+1};
+    }
+  }
+  addSlideShowImages() {
+    this.slideshowImages = [];
+    for (let i = 0; i < this.nrSlideShowImages; i++) {
+      this.slideshowImages[i] = {url: '', nr: i+1};
     }
   }
 
