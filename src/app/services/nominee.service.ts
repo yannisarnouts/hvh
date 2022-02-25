@@ -22,4 +22,7 @@ export class NomineeService {
   getNominees() {
     return this.fs.collection("nominees").get();
   }
+  deleteNominee(id: string) {
+    return this.fs.firestore.doc('nominees/' + id).delete();
+  }
 }

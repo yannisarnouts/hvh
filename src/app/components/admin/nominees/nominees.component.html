@@ -32,6 +32,7 @@
       <td>{{nominee.firstname}} {{nominee.lastname}}</td>
       <td>{{nominee.company}}</td>
       <td><a href="admin/nominees/{{nominee.id}}" class="btn btn-primary">Meer info</a></td>
+      <td><button class="btn btn-danger" (click)="deleteNominee(nominee.id)">Delete</button></td>
     </tr>
     </tbody>
   </table>

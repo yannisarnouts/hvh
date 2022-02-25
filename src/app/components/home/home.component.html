@@ -1,6 +1,6 @@
 <section id="heroHome" class="d-flex align-items-center hero">
 
-  <div class="container" *ngIf="cmsData">
+  <div class="container pt-5" *ngIf="cmsData">
     <div class="row">
       <div class="col-lg-4 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
         <h1>{{cmsData.homeTitle}}</h1>
@@ -23,7 +23,7 @@
     </div>
   </div>
 </section><!-- End Hero -->
-<div class="container" *ngIf="cmsData">
+<div class="container pt-3" *ngIf="cmsData">
   <div class="row shared-benefitItems">
     <h2 style="font-weight: bold">{{cmsData.homeSubtitle}}</h2>
     <div [innerHTML]="cmsData.homeParagraph"></div>

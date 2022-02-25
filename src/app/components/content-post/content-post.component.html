@@ -1,9 +1,9 @@
 <section id="heroContentPost" class="hero mb-5" style="margin-top: -3rem;">
   <div *ngIf="content">
-    <div class="container pt-3">
-      <h1>{{content.title}}</h1>
-    </div>
-    <div class="container hero-img">
+    <!--<div class="container pt-3">-->
+      <!--<h1>{{content.title}}</h1>-->
+    <!--</div>-->
+    <div class="container hero-img mt-3">
       <img *ngIf="content.img"
            src="{{content.img}}" style="max-height: 300px"
            alt="{{content.title}} banner" title="{{content.title}} banner">
@@ -11,9 +11,10 @@
     </div>
   </div>
 </section>
-
 <section id="PostContent" class="post-content pt-lg-5" *ngIf="content">
-
+  <div class="container pt-5">
+    <h1 id="postTitle">{{content.title}}</h1>
+  </div>
   <!-- Primary Category/Author/Date -->
   <div class="container post-info">
     <div class="row">

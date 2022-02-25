@@ -75,4 +75,13 @@ export class NomineesComponent implements OnInit {
     t.setSeconds(secs);
     return t.toLocaleDateString("nl-BE");
   }
+  deleteNominee(id: string) {
+    var doDelete = confirm("Delete nominee?");
+    if (doDelete) {
+      sessionStorage.removeItem("nominees");
+      this.nomineeService.deleteNominee(id).then(res => {
+        location.reload();
+      });
+    }
+  }
 }
