@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ExcelService} from "../../../services/excel.service";
 import {FinalistService} from "../../../services/finalist.service";
 
@@ -10,7 +10,9 @@ import {FinalistService} from "../../../services/finalist.service";
 export class AdminFinalistsComponent implements OnInit {
   finalists = new Array();
   votes = new Array();
-  constructor(private excelService: ExcelService, private finalistService: FinalistService) { }
+
+  constructor(private excelService: ExcelService, private finalistService: FinalistService) {
+  }
 
   ngOnInit(): void {
     this.getFinalists();
@@ -18,23 +20,17 @@ export class AdminFinalistsComponent implements OnInit {
   }
 
   getFinalists() {
-    let contentsString = '';
-    if (sessionStorage.getItem('finalists') !== null) {
-      // @ts-ignore
-      contentsString = sessionStorage.getItem('finalists');
-      this.finalists = JSON.parse(contentsString);
-    } else {
-      this.finalistService.getFinalists().subscribe((querySnapshot) => {
-        querySnapshot.forEach(doc => {
-          let cont: any = doc.data();
-          cont.id = doc.id;
-          cont.votes = [];
-          this.finalists.push(cont);
-        });
-        sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
+    this.finalistService.getFinalists().subscribe((querySnapshot) => {
+      querySnapshot.forEach(doc => {
+        let cont: any = doc.data();
+        cont.id = doc.id;
+        cont.votes = [];
+        this.finalists.push(cont);
       });
-    }
+      sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
+    });
   }
+
   getVotes() {
     let contentsString = '';
     if (sessionStorage.getItem('votes') !== null) {
@@ -54,8 +50,9 @@ export class AdminFinalistsComponent implements OnInit {
       });
     }
   }
+
   combineVotesToFinalist() {
-    for (let i = 0; i<this.finalists.length; i++) {
+    for (let i = 0; i < this.finalists.length; i++) {
       this.finalists[i].votes = [];
       for (let vote of this.votes) {
         if (vote.finalistId === this.finalists[i].id) {
@@ -68,6 +65,7 @@ export class AdminFinalistsComponent implements OnInit {
     });
     sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
   }
+
   exportAsXSLX() {
     this.excelService.exportAsExcelFile(this.finalists, 'finalists');
   }

@@ -11,8 +11,6 @@ import {docChanges} from "@angular/fire/compat/firestore";
 export class FinalistsComponent implements OnInit {
   firstname: string = "";
   finalists = new Array();
-  publicFinalists = new Array();
-  privateFinalists = new Array();
   voterEmail = '';
   showSuccess = false;
   successVisible = false;
@@ -30,7 +28,6 @@ export class FinalistsComponent implements OnInit {
       // @ts-ignore
       contentsString = sessionStorage.getItem('finalists');
       this.finalists = JSON.parse(contentsString);
-      this.filterFinalists();
     } else {
       this.getFinalists();
     }
@@ -45,16 +42,9 @@ export class FinalistsComponent implements OnInit {
         cont.votes = [];
         this.finalists.push(cont);
       });
-      this.filterFinalists();
       sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
     });
   }
-
-  filterFinalists() {
-    this.publicFinalists = this.finalists.filter(f => f.category === 'public');
-    this.privateFinalists = this.finalists.filter(f => f.category === 'private');
-  }
-
   openDialog(vote: any): void {
     const dialogRef = this.dialog.open(VoteDialog, {
       width: '750px',
@@ -64,13 +54,12 @@ export class FinalistsComponent implements OnInit {
         company: vote.company,
         voterEmail: this.voterEmail,
         finalistId: vote.id,
-        category: vote.category
       },
     });
     // TODO: Fix vote once
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.finalistService.getVote(result.voterEmail, result.category).then(docSnapshot => {
+        this.finalistService.getVote(result.voterEmail).then(docSnapshot => {
           this.successVisible = true;
           if (!docSnapshot.exists) {
             result.date = new Date();

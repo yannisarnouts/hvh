@@ -38,6 +38,7 @@ const routes: Routes = [
   {path: 'aLogin', component: AdminLoginComponent},
   {path: '', component: HomeComponent},
   {path: 'content', component: ContentComponent},
+  {path: 'finalisten', component: FinalistsComponent},
   {path: 'content/:id', component: ContentPostComponent},
   {path: 'admin', component: AdminPanelComponent, canActivate: [LoginActivate]},
   {path: 'admin/submitContent', component: SubmitContentComponent, canActivate: [LoginActivate]},
