@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FinalistService} from "../../services/finalist.service";
 import {docChanges} from "@angular/fire/compat/firestore";
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   templateUrl: './finalists.component.html',
   styleUrls: ['./finalists.component.css']
 })
-export class FinalistsComponent implements OnInit {
+export class FinalistsComponent implements OnInit, AfterViewInit {
   firstname: string = "";
   finalists = new Array();
   voterEmail = '';
@@ -23,6 +23,13 @@ export class FinalistsComponent implements OnInit {
   ngOnInit(): void {
     this.getCMSFromSessionStorage();
     this.getFinalistsFromSessionStorage();
+  }
+
+  ngAfterViewInit(): void {
+    console.log(document.getElementsByClassName('sb-icon')[0]);
+    for (let i = 0; i < document.getElementsByClassName('sb-icon').length; i++) {
+      document.getElementsByClassName('sb-icon')[i].setAttribute('style','width: 2em; min-height: 2em;');
+    }
   }
 
   getFinalistsFromSessionStorage() {

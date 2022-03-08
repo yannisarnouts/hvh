@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ExcelService} from "../../../services/excel.service";
 import {FinalistService} from "../../../services/finalist.service";
 
@@ -51,6 +51,7 @@ export class AdminFinalistsComponent implements OnInit {
           this.finalists[i].votes.push(vote);
         }
       }
+      this.finalists[i].nrVotes = this.finalists[i].votes.length;
     }
     this.finalists.sort((a, b) => {
       return b.votes.length - a.votes.length;

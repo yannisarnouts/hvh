@@ -20,7 +20,7 @@
       <td>{{finalist.firstname}} {{finalist.lastname}}</td>
       <td>{{finalist.company}}</td>
       <td *ngIf="finalist.motivation">{{finalist.motivation.substring(0, 70)}} ...</td>
-      <td *ngIf="finalist.votes">{{finalist.votes.length}}</td>
+      <td *ngIf="finalist.votes">{{finalist.nrVotes}}</td>
       <td><a href="admin/finalisten/{{finalist.id}}" class="btn btn-primary">Meer info</a></td>
       <td><button class="btn btn-danger" (click)="deleteFinalist(finalist.id)">Delete</button></td>
     </tr>
