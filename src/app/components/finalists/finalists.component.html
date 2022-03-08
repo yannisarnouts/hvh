@@ -1,10 +1,9 @@
 <section id="heroContent" class="d-flex align-items-center hero">
-
-  <div class="container">
+  <div class="container" *ngIf="cmsData">
     <div class="row">
       <div class="col-lg-4 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-        <h1 style="color: #3a3a3a">De finalisten</h1>
-        <p>Dit zijn onze finalisten van 2022</p>
+        <h1 style="color: #3a3a3a">{{cmsData.title}}</h1>
+        <p>{{cmsData.subtitle}}</p>
       </div>
       <div class="col-lg-8 order-1 order-lg-2 hero-img">
         <img
@@ -15,19 +14,7 @@
   </div>
 </section><!-- End Hero -->
 <section class="">
-  <div class="container pb-5">
-    <h1>Stem op jouw favoriete Held van de Helpdesk</h1>
-    <p>Uit de meer dan 450 ingezonden nominaties voor Helpdeskhelden, selecteerde onze jury de 6 meest behulpzame, flexibele en bijzondere helpdeskmedewerkers.</p>
-
-    <p>In de categorie Publieke Sector, zijn de finalisten Annick Elyn (Gemeente Evergem), Jurgen Roman (Vlaamse Landmaatschappij) en Kristof Haernyck (Gemeente Deerlijk). In de categorie Private Sector, koos de jury ervoor om Frederick Vereecken (Cevi), David Van Hex (Actief interim) en David Torpes (Fujitsu) door te laten gaan naar de volgende ronde.
-    </p>
-    <p>De finalist die de jury het meest charmeert en imponeert met zijn of haar realisaties aan de helpdesk, mag een jaar lang de titel ‘Held van de Helpdesk’ dragen. Daarnaast is er ook een publieksprijs voor de persoon met het meeste aantal stemmen.
-    </p>
-    <p>Jurylid Steven Van Belleghem: “Succesvolle helpdeskmedewerkers blinken uit in échte menselijke kenmerken: ze zijn empathisch, kunnen uitstekend communiceren én hebben een oprechte motivatie om mensen te helpen. Als je zo een medewerker aan de lijn krijgt, dan voel je dat gewoon als klant. Het vertrouwen dat zo een mensen geven aan klanten, is onbetaalbare reclame voor elk bedrijf.”
-    </p>
-    <p>Stemmen op de 6 finalisten kan tot dinsdag 16 maart. Op donderdag 18 maart weten we wie dé Held van de Helpdesk wordt. Die dag roepen we dan ook uit tot de Dag van de Helpdeskmedewerker! De winnaars maken kans op een ontspannend weekendje weg.
-    </p>
-  </div>
+  <div class="container pb-5" [innerHTML]="cmsData.paragraph"></div>
 </section>
 <section id="CategoryPosts">
   <div class="container">

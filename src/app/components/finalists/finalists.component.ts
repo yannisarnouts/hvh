@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FinalistService} from "../../services/finalist.service";
 import {docChanges} from "@angular/fire/compat/firestore";
+import {CmsService} from "../../services/cms.service";
 
 @Component({
   selector: 'app-finalists',
@@ -14,11 +15,12 @@ export class FinalistsComponent implements OnInit {
   voterEmail = '';
   showSuccess = false;
   successVisible = false;
-
-  constructor(private finalistService: FinalistService, public dialog: MatDialog) {
+  cmsData: any;
+  constructor(private finalistService: FinalistService, public dialog: MatDialog, private cmsService: CmsService) {
   }
 
   ngOnInit(): void {
+    this.getCMSFromSessionStorage();
     this.getFinalistsFromSessionStorage();
   }
 
@@ -30,6 +32,24 @@ export class FinalistsComponent implements OnInit {
       this.finalists = JSON.parse(contentsString);
     } else {
       this.getFinalists();
+    }
+  }
+
+  getCMSData() {
+    this.cmsService.getCMS("finalistCMS").then(docSnapshot => {
+      this.cmsData = docSnapshot.data();
+      sessionStorage.setItem('finalistCMS', JSON.stringify(this.cmsData));
+    });
+  }
+
+  getCMSFromSessionStorage() {
+    let contentsString = '';
+    if (sessionStorage.getItem('finalistCMS') !== null) {
+      // @ts-ignore
+      contentsString = sessionStorage.getItem('finalistCMS');
+      this.cmsData = JSON.parse(contentsString);
+    } else {
+      this.getCMSData();
     }
   }
 
