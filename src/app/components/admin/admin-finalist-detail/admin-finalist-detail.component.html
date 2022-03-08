@@ -17,6 +17,7 @@
       <label for="motivation">Motivation</label>
       <textarea [(ngModel)]="finalist.motivation" class="form-control" id="motivation" name="motivation" readonly></textarea>
     </div>
+    <img src="{{finalist.img}}" style="width: 150px">
   </form>
   <br/>
   <h1>{{finalist.votes.length}} stemmen ontvangen</h1>
