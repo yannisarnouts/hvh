@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {Finalist} from "../components/admin/submit-finalist/submit-finalist.component";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class FinalistService {
   }
   getFinalistVotes() {
     return this.fs.collection("finalistVotes").get();
+  }
+
+  createFinalist(finalist: Finalist) {
+    return this.fs.collection("finalists").add(finalist);
   }
   getVote(email: string, category: string) {
     return this.fs.firestore.doc('finalistVotes/' + email + '_' + category).get();

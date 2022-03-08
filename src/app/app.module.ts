@@ -27,6 +27,7 @@ import { AdminFinalistsComponent } from './components/admin/admin-finalists/admi
 import { AdminFinalistDetailComponent } from './components/admin/admin-finalist-detail/admin-finalist-detail.component';
 import { AdminContentListComponent } from './components/admin/admin-content-list/admin-content-list.component';
 import { EditContentComponent } from './components/admin/edit-content/edit-content.component';
+import { SubmitFinalistComponent } from './components/admin/submit-finalist/submit-finalist.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EditContentComponent } from './components/admin/edit-content/edit-conte
     AdminFinalistsComponent,
     AdminFinalistDetailComponent,
     AdminContentListComponent,
-    EditContentComponent
+    EditContentComponent,
+    SubmitFinalistComponent
   ],
   imports: [
     BrowserModule,
