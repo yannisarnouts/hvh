@@ -18,5 +18,4 @@ export class CmsService {
   getCMS(id: string) {
     return this.fs.firestore.doc('cms/' + id).get();
   }
-
 }

@@ -76,7 +76,6 @@ export class FinalistsComponent implements OnInit {
         finalistId: vote.id,
       },
     });
-    // TODO: Fix vote once
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         this.finalistService.getVote(result.voterEmail).then(docSnapshot => {
@@ -125,10 +124,10 @@ export class VoteDialog {
         this.showError = true;
         return true;
       }
-      // else if (this.recaptcha == undefined) {
-      //   this.errorMessage = "Vink reCAPTCHA aan";
-      //   return true;
-      // }
+      else if (this.recaptcha == undefined) {
+        this.errorMessage = "Vink reCAPTCHA aan";
+        return true;
+      }
       else {
         this.showError = false;
         return false;
