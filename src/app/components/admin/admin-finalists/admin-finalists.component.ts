@@ -32,23 +32,15 @@ export class AdminFinalistsComponent implements OnInit {
   }
 
   getVotes() {
-    let contentsString = '';
-    if (sessionStorage.getItem('votes') !== null) {
-      // @ts-ignore
-      contentsString = sessionStorage.getItem('votes');
-      this.votes = JSON.parse(contentsString);
-      this.combineVotesToFinalist();
-    } else {
-      this.finalistService.getFinalistVotes().subscribe((querySnapshot) => {
-        querySnapshot.forEach(doc => {
-          let cont: any = doc.data();
-          cont.id = doc.id;
-          this.votes.push(cont);
-        });
-        this.combineVotesToFinalist();
-        sessionStorage.setItem('votes', JSON.stringify(this.votes));
+    this.finalistService.getFinalistVotes().subscribe((querySnapshot) => {
+      querySnapshot.forEach(doc => {
+        let cont: any = doc.data();
+        cont.id = doc.id;
+        this.votes.push(cont);
       });
-    }
+      this.combineVotesToFinalist();
+      sessionStorage.setItem('votes', JSON.stringify(this.votes));
+    });
   }
 
   combineVotesToFinalist() {
