@@ -29,6 +29,8 @@ import { AdminContentListComponent } from './components/admin/admin-content-list
 import { EditContentComponent } from './components/admin/edit-content/edit-content.component';
 import { SubmitFinalistComponent } from './components/admin/submit-finalist/submit-finalist.component';
 import { FinalistCmsComponent } from './components/admin/finalist-cms/finalist-cms.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { FinalistCmsComponent } from './components/admin/finalist-cms/finalist-c
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
-    AngularFireAnalyticsModule
+    AngularFireAnalyticsModule,
+    ShareButtonsModule,
+    ShareIconsModule
 ],
   providers: [LoginActivate, Meta
   ],

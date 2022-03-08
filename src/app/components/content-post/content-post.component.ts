@@ -18,7 +18,9 @@ export class ContentPostComponent implements OnInit {
     this.getContentPosts();
   }
   ngAfterViewInit(): void {
-    this.showImg(1);
+    if (this.content && this.content.slideshowImages) {
+      this.showImg(1);
+    }
   }
 
   getContentPost() {

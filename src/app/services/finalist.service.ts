@@ -30,4 +30,7 @@ export class FinalistService {
         .then(res => {}, err => reject(err));
     });
   }
+  deleteFinalist(id: string) {
+    return this.fs.firestore.doc('finalists/' + id).delete();
+  }
 }

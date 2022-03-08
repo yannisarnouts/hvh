@@ -58,6 +58,16 @@ export class AdminFinalistsComponent implements OnInit {
     sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
   }
 
+  deleteFinalist(id: string) {
+    var doDelete = confirm("Delete finalist?");
+    if (doDelete) {
+      sessionStorage.removeItem("finalists");
+      this.finalistService.deleteFinalist(id).then(res => {
+        location.reload();
+      });
+    }
+  }
+
   exportAsXSLX() {
     this.excelService.exportAsExcelFile(this.finalists, 'finalists');
   }

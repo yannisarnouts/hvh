@@ -1,4 +1,4 @@
-<section id="heroContent" class="d-flex align-items-center hero">
+<section id="heroContent" class="d-flex align-items-center hero" *ngIf="cmsData">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
@@ -13,7 +13,7 @@
     </div>
   </div>
 </section><!-- End Hero -->
-<section class="">
+<section class="" *ngIf="cmsData">
   <div class="container pb-5" [innerHTML]="cmsData.paragraph"></div>
 </section>
 <section id="CategoryPosts">
@@ -47,6 +47,13 @@
           <div class="card-footer bg-transparent border-0">
             <button class="btn btn-topic mt-4 mb-4 border-0" style="font-weight: 400;" mat-raised-button (click)="openDialog(finalist)">Stem op mij</button>
           </div>
+          <share-buttons theme="circles-dark"
+                         [include]="['copy', 'linkedin', 'twitter', 'whatsapp']"
+                         [showIcon]="true"
+                         [showText]="false"
+                         url="{{shareFinalistURL(finalist.id)}}"
+                         class="pt-5">
+          </share-buttons>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {FinalistService} from "../../services/finalist.service";
 import {docChanges} from "@angular/fire/compat/firestore";
 import {CmsService} from "../../services/cms.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-finalists',
@@ -16,7 +17,7 @@ export class FinalistsComponent implements OnInit {
   showSuccess = false;
   successVisible = false;
   cmsData: any;
-  constructor(private finalistService: FinalistService, public dialog: MatDialog, private cmsService: CmsService) {
+  constructor(private finalistService: FinalistService, public dialog: MatDialog, private cmsService: CmsService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,6 +31,8 @@ export class FinalistsComponent implements OnInit {
       // @ts-ignore
       contentsString = sessionStorage.getItem('finalists');
       this.finalists = JSON.parse(contentsString);
+      const voteFor = this.router.url.split("#")[1];
+      if (voteFor) this.openVoteFor(voteFor);
     } else {
       this.getFinalists();
     }
@@ -63,8 +66,22 @@ export class FinalistsComponent implements OnInit {
         this.finalists.push(cont);
       });
       sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
+      const voteFor = this.router.url.split("#")[1];
+      if (voteFor) this.openVoteFor(voteFor);
     });
   }
+
+  openVoteFor(id: string) {
+    const fid = id.split('=')[1];
+    console.log(fid);
+    const fin = this.finalists.find(f => f.id == fid);
+    this.openDialog(fin)
+  }
+
+  shareFinalistURL(fid: string) {
+    return window.location.href + '#vote=' + fid;
+  }
+
   openDialog(vote: any): void {
     const dialogRef = this.dialog.open(VoteDialog, {
       width: '750px',
@@ -116,7 +133,6 @@ export class VoteDialog {
   ) {
   }
 
-  // TODO: Fix recaptcha
   disableForm() {
     if (this.data.voterEmail && this.data.voterEmail.length > 1) {
       if (!this.data.voterEmail.match(/^.+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.voterEmail.length < 6) {
