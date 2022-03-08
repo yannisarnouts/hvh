@@ -19,6 +19,9 @@ export class FinalistService {
   createFinalist(finalist: Finalist) {
     return this.fs.collection("finalists").add(finalist);
   }
+  editFinalist(finalist: any) {
+    return this.fs.firestore.doc('finalists/' + finalist.id).update(finalist);
+  }
   getVote(email: string) {
     return this.fs.firestore.doc('finalistVotes/' + email).get();
   }

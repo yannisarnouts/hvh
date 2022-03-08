@@ -1,0 +1,34 @@
+<div class="container pt-3">
+  <a href="admin/finalisten" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
+  <form>
+    <h1 class="pt-2">Main content</h1>
+    <div class="form-group">
+      <label for="firstname">Voornaam*</label>
+      <input type="text" [(ngModel)]="finalist.firstname" class="form-control" id="firstname" name="firstname"
+             placeholder="Pam" required>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Achternaam*</label>
+      <input type="text" [(ngModel)]="finalist.lastname" class="form-control" id="lastname" name="lastname"
+             placeholder="Halpert" required>
+    </div>
+    <div class="form-group">
+      <label for="company">Bedrijf</label>
+      <input type="text" [(ngModel)]="finalist.company" class="form-control" id="company" name="company" placeholder="Dunder Mifflin" required>
+    </div>
+    <div class="form-group">
+      <label for="motivation">Motivatie</label>
+      <textarea [(ngModel)]="finalist.motivation" class="form-control" id="motivation" name="motivation" placeholder="Beste in de receptie" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="img">Foto</label>
+      <input type="url" [(ngModel)]="finalist.img" class="form-control" id="img" name="img">
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary" (click)="editFinalist()"
+            [disabled]="this.finalist.firstname.length <= 1 || this.finalist.lastname.length <= 1 || this.finalist.company.length <= 1 || this.finalist.img.length <= 1">
+      Submit
+    </button>
+    <p *ngIf="submitted">Toegevoegd!</p>
+  </form>
+</div>

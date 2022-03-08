@@ -30,7 +30,12 @@ export class AdminFinalistsComponent implements OnInit {
       sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
     });
   }
-
+  editFinalist(id: string) {
+    let editFinalist = this.finalists.find(f => f.id === id);
+    sessionStorage.setItem('editFinalist', JSON.stringify(editFinalist));
+    location.replace("/admin/editFinalist/" + id);
+    // href="/admin/editContent/{{content.id}}"
+  }
   getVotes() {
     this.finalistService.getFinalistVotes().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {

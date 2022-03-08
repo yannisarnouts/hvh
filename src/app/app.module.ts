@@ -31,6 +31,7 @@ import { SubmitFinalistComponent } from './components/admin/submit-finalist/subm
 import { FinalistCmsComponent } from './components/admin/finalist-cms/finalist-cms.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { EditFinalistComponent } from './components/admin/edit-finalist/edit-finalist.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     AdminContentListComponent,
     EditContentComponent,
     SubmitFinalistComponent,
-    FinalistCmsComponent
+    FinalistCmsComponent,
+    EditFinalistComponent
   ],
   imports: [
     BrowserModule,

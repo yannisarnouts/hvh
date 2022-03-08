@@ -30,5 +30,4 @@ export class SubmitFinalistComponent implements OnInit {
       this.finalist = {firstname: '', lastname: '', company: '', motivation: '', img: ''};
     });
   }
-
 }
