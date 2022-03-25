@@ -11,7 +11,8 @@ export interface DialogData {
   company: string,
   email: string,
   phone: string,
-  motivation: string
+  motivation: string,
+  reCAPTCHA: string,
 }
 
 @Component({
@@ -70,7 +71,8 @@ export class HomeComponent implements OnInit {
         company: this.company,
         email: this.email,
         phone: this.phone,
-        motivation: this.motivation
+        motivation: this.motivation,
+        reCAPTCHA: this.cmsData.reCAPTCHA
       },
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -104,6 +106,7 @@ export class NominateDialog {
     public dialogRef: MatDialogRef<NominateDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
+    console.log(this.data);
   }
 
   disableForm() {

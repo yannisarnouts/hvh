@@ -16,7 +16,12 @@
     <div class="form-group">
       <label for="banner">Home Banner</label>
       <input type="text" [(ngModel)]="cmsData.banner" class="form-control" id="banner" name="banner" required>
-    </div><br/>
+    </div>
+    <div class="form-group">
+      <label for="reCAPTCHA">Google reCAPTCHA (ik ben geen robot, wordt gebruikt als veiligheid bij het nominere)</label>
+      <input type="text" [(ngModel)]="cmsData.reCAPTCHA" class="form-control" id="reCAPTCHA" name="reCAPTCHA" required>
+    </div>
+    <br/>
     <div class="form-group">
       <h1>CTA knop</h1>
       <label for="ctaText">Knop tekst</label>
