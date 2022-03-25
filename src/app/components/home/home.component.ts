@@ -3,6 +3,7 @@ import {NomineeService} from "../../services/nominee.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CmsService} from "../../services/cms.service";
 import {environment} from "../../../environments/environment.prod";
+import {DomSanitizer} from "@angular/platform-browser";
 
 export interface DialogData {
   firstname: string;
@@ -30,8 +31,9 @@ export class HomeComponent implements OnInit {
   showError = false;
   cmsData: any; showIframe = false;
   env = environment;
+  videoSrc: any;
 
-  constructor(private nomineeService: NomineeService, public dialog: MatDialog, private cmsService: CmsService) {
+  constructor(private nomineeService: NomineeService, public dialog: MatDialog, private cmsService: CmsService, public sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit {
     this.cmsService.getCMS("homeCMS").then(docSnapshot => {
       this.cmsData = docSnapshot.data();
       sessionStorage.setItem('homeCMS', JSON.stringify(this.cmsData));
+      this.videoSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.cmsData.video.src);
     });
   }
 
@@ -52,6 +55,7 @@ export class HomeComponent implements OnInit {
       // @ts-ignore
       contentsString = sessionStorage.getItem('homeCMS');
       this.cmsData = JSON.parse(contentsString);
+      this.videoSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.cmsData.video.src);
     } else {
       this.getCMSData();
     }

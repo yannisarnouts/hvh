@@ -35,12 +35,12 @@
     </div>
   </div>
   <div>
-    <div>
-      <iframe src="https://player.clevercast.com/?account_id=Wjb4LJ&item_id=ARQMQN"
+    <div *ngIf="videoSrc">
+      <iframe [src]="videoSrc"
               allowfullscreen="" style="width:60vw; height: 60vh; display: block; margin: 0 auto;" title="Embedded post"
               frameborder="0"></iframe>
       <div style="width:60vw; display: block; margin: 0 auto;" class="pt-3">
-        <span>Bron: <a href="hhttps://www.ringtv.be/video/bj%C3%B6rn-de-brandt-held-van-de-helpdesk-humor-neemt-de-frustraties-weg" target="_blank">ringtv.be</a></span><br/>
+        <span>Bron: <a [href]="cmsData.video.sourceURL" target="_blank">{{cmsData.video.sourceName}}</a></span><br/>
       </div>
     </div>
   </div>
