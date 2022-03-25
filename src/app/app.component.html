@@ -12,10 +12,10 @@
       <li class="nav-item active">
         <a class="nav-link navItem" href="#" style="color: white">Home</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="cmsData.contentEnabled">
         <a class="nav-link navItem" href="/content" style="color: white">Nieuws</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="cmsData.finalistsEnabled">
         <a class="nav-link navItem" href="/finalisten" style="color: white">Finalisten</a>
       </li>
     </ul>

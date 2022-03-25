@@ -1,0 +1,20 @@
+<div class="container pt-3" *ngIf="cmsData">
+  <a href="admin" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
+  <form>
+    <div class="form-group">
+      <label>Nieuws pagina</label><br/>
+      <input type="checkbox" [(ngModel)]="cmsData.contentEnabled" id="contentEnabled" name="contentEnabled" value="contentEnabled">
+      <label for="contentEnabled">&nbsp; Nieuws pagina zichtbaar</label><br>
+    </div>
+    <div class="form-group">
+      <label>Finalisten pagina</label><br/>
+      <input type="checkbox" [(ngModel)]="cmsData.finalistsEnabled" id="finalistsEnabled" name="finalistsEnabled" value="finalistsEnabled">
+      <label for="finalistsEnabled">&nbsp; Finalisten pagina zichtbaar</label><br>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary" (click)="submit()">
+      Submit
+    </button>
+    <p *ngIf="submitted">Toegevoegd!</p>
+  </form>
+</div>

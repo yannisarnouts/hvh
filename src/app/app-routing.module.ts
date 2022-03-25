@@ -19,6 +19,7 @@ import {EditContentComponent} from "./components/admin/edit-content/edit-content
 import {SubmitFinalistComponent} from "./components/admin/submit-finalist/submit-finalist.component";
 import {FinalistCmsComponent} from "./components/admin/finalist-cms/finalist-cms.component";
 import {EditFinalistComponent} from "./components/admin/edit-finalist/edit-finalist.component";
+import {AdminPagesComponent} from "./components/admin/admin-pages/admin-pages.component";
 
 @Injectable()
 export class LoginActivate implements CanActivate {
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path: 'admin/editFinalist/:id', component: EditFinalistComponent, canActivate: [LoginActivate]},
   {path: 'admin/submitFinalists', component: SubmitFinalistComponent, canActivate: [LoginActivate]},
   {path: 'admin/finalisten/:id', component: AdminFinalistDetailComponent, canActivate: [LoginActivate]},
+  {path: 'admin/pages', component: AdminPagesComponent, canActivate: [LoginActivate]},
 ];
 
 @NgModule({
