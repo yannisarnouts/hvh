@@ -36,4 +36,7 @@ export class FinalistService {
   deleteFinalist(id: string) {
     return this.fs.firestore.doc('finalists/' + id).delete();
   }
+  deleteVote(id: string) {
+    return this.fs.firestore.doc('finalistVotes/' + id).delete();
+  }
 }

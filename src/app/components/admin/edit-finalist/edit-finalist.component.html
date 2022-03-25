@@ -30,4 +30,25 @@
     </button>
     <p *ngIf="submitted">Toegevoegd!</p>
   </form>
+  <br/>
+  <h1>{{finalist.votes.length}} stemmen ontvangen</h1>
+  <span>Stemmen gekregen van:</span>
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">E-mail Publisher</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let fv of finalist.votes; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{fv.voterEmail}}</td>
+      <td>{{toDateTime(fv.date.seconds)}}</td>
+      <td><button class="btn btn-danger" (click)="deleteVote(fv.id)">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
 </div>

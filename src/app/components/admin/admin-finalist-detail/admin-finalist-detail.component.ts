@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {FinalistService} from "../../../services/finalist.service";
 
 @Component({
   selector: 'app-admin-finalist-detail',
@@ -10,7 +11,7 @@ export class AdminFinalistDetailComponent implements OnInit {
   finalist: any;
   finalists = new Array();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private finalistService: FinalistService) { }
 
   ngOnInit(): void {
     this.getFinalists()
@@ -28,5 +29,22 @@ export class AdminFinalistDetailComponent implements OnInit {
       this.finalists = JSON.parse(nomineeString);
     }
     this.getFinalist();
+  }
+  toDateTime(secs: any) {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t.toLocaleDateString("nl-BE");
+  }
+  deleteVote(id: string) {
+    var doDelete = confirm("Delete nominee?");
+    if (doDelete) {
+      sessionStorage.removeItem("nominees");
+      let rmIndex = this.finalist.votes.findIndex((el: { id: string; }) => el.id === id);
+      this.finalist.votes.slice(rmIndex, 1);
+      sessionStorage.setItem("editFinalist", JSON.parse(this.finalist));
+      this.finalistService.deleteVote(id).then(res => {
+        location.reload();
+      });
+    }
   }
 }
