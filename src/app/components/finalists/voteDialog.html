@@ -5,8 +5,7 @@
     <input type="email" [(ngModel)]="data.voterEmail" class="form-control" id="email" placeholder="Jouw e-mailadres" required>
   </div>
   <br/>
-  <ngx-recaptcha2 siteKey="6LekEjgeAAAAANJIS8fzz_k7N-SSkqvfTujeHICi" [(ngModel)]="recaptcha" required></ngx-recaptcha2>
-  <div id="errMsg" class="alert alert-danger mt-3" *ngIf="showError">{{errorMessage}}</div>
+  <!--<div id="errMsg" class="alert alert-danger mt-3" *ngIf="showError">{{errorMessage}}</div>-->
   <button type="submit" [mat-dialog-close]="data" class="btn mt-4 btn-get-started" [disabled]="disableForm()">Stem hier op jouw held</button>
   <br/><br/><br/>
 </div>

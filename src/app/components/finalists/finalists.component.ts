@@ -141,14 +141,10 @@ export class VoteDialog {
   }
 
   disableForm() {
-    if (this.data.voterEmail && this.data.voterEmail.length > 1) {
+    if (this.data.voterEmail && this.data.voterEmail.length > 6) {
       if (!this.data.voterEmail.match(/^.+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.voterEmail.length < 6) {
-        this.errorMessage = "E-mail adres is niet geldig";
+        // this.errorMessage = "E-mail adres is niet geldig";
         this.showError = true;
-        return true;
-      }
-      else if (this.recaptcha == undefined) {
-        this.errorMessage = "Vink reCAPTCHA aan";
         return true;
       }
       else {
