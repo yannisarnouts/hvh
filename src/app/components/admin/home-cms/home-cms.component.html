@@ -10,8 +10,26 @@
       <input type="text" [(ngModel)]="cmsData.homeSubtitle" class="form-control" id="title" name="title" required>
     </div>
     <div class="form-group">
+      <label>CTA knop</label><br/>
+      <label for="ctaText">Knop tekst</label>
+      <input type="text" [(ngModel)]="cmsData.cta.text" class="form-control" id="ctaText" name="ctaText" required>
+      <label for="ctaText">Knop type</label><br/>
+      <select [(ngModel)]="cmsData.cta.type" name="ctaType" id="ctaType">
+        <option value="vote">Stemmen</option>
+        <option value="finalists">Ga naar finalisten</option>
+      </select><br/>
+      <input type="checkbox" [(ngModel)]="cmsData.cta.visible" id="ctaVisible" name="ctaVisible" value="ctaVisible">
+      <label for="ctaVisible">Knop zichtbaar</label><br>
+      <input type="checkbox" [(ngModel)]="cmsData.cta.enabled" id="ctaEnabled" name="ctaEnabled" value="ctaEnabled">
+      <label for="ctaEnabled">Knop klikbaar</label><br>
+    </div>
+    <div class="form-group">
       <label for="paragraph">Home Paragraph</label>
       <textarea type="text" [(ngModel)]="cmsData.homeParagraph" class="form-control" id="paragraph" name="paragraph" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="banner">Home Banner</label>
+      <input type="text" [(ngModel)]="cmsData.banner" class="form-control" id="banner" name="banner" required>
     </div>
     <br/>
     <button type="submit" class="btn btn-primary" (click)="submit()">

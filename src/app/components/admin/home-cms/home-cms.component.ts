@@ -13,7 +13,7 @@ export class HomeCmsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cmsService.getCMS("homeCMS").then(docSnapshot => {
-      this.cmsData = docSnapshot.data()
+      this.cmsData = docSnapshot.data();
     })
   }
   submit() {
