@@ -6,6 +6,10 @@ import {CmsService} from "../../../services/cms.service";
   templateUrl: './finalist-cms.component.html',
   styleUrls: ['./finalist-cms.component.css']
 })
+/*
+/admin/finalists
+CMS for finalists page, edit contents for this page
+ */
 export class FinalistCmsComponent implements OnInit {
   cmsData: any;
   submitted = false;

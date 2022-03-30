@@ -7,6 +7,10 @@ import {ExcelService} from "../../../services/excel.service";
   templateUrl: './nominees.component.html',
   styleUrls: ['./nominees.component.css']
 })
+/*
+admin/nominees
+Overview page of all nominees
+ */
 export class NomineesComponent implements OnInit {
   nominees = new Array();
   fullNominees = new Array();
@@ -16,10 +20,12 @@ export class NomineesComponent implements OnInit {
 
   constructor(private nomineeService: NomineeService, private excelService: ExcelService) { }
 
+  /*
+Retrieve nominees either from the session storage or from the database
+ */
   ngOnInit(): void {
     this.getContentsFromSessionStorage();
   }
-
   getNominees() {
     if (this.nomineesSessionStorage.length > 0) {
       this.nominees = this.nomineesSessionStorage;
@@ -47,6 +53,9 @@ export class NomineesComponent implements OnInit {
     this.getNominees();
   }
 
+  /*
+  Search bar allows to search a nominee
+   */
   searchNominee() {
     this.searchNominees = [];
     switch (this.searchBy) {

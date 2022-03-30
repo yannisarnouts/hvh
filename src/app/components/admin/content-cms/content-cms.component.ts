@@ -7,6 +7,10 @@ import {docSnapshots} from "@angular/fire/firestore";
   templateUrl: './content-cms.component.html',
   styleUrls: ['./content-cms.component.css']
 })
+/*
+/admin/content
+CMS page for the content page, here we can edit all content for the page
+ */
 export class ContentCmsComponent implements OnInit {
   submitted = false;
   cmsData: any;

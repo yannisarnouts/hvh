@@ -17,6 +17,10 @@ export interface Content {
   templateUrl: './submit-content.component.html',
   styleUrls: ['./submit-content.component.css']
 })
+/*
+/admin/submitContent
+To create a content post
+ */
 export class SubmitContentComponent implements OnInit {
   content: Content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: '', slideshowImages: []};
   subContents = new Array();

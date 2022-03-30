@@ -8,6 +8,9 @@ const EXCEL_EXTENSION = '.xlsx';
 @Injectable({
   providedIn: 'root'
 })
+/*
+Download overviews to an excel, e.g. for all the nominees or finalists
+ */
 export class ExcelService {
 
   constructor() { }

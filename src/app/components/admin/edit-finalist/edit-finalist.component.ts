@@ -7,6 +7,10 @@ import {FinalistService} from "../../../services/finalist.service";
   templateUrl: './edit-finalist.component.html',
   styleUrls: ['./edit-finalist.component.css']
 })
+/*
+/admin/editFinalist/id
+edit all data for a finalist
+ */
 export class EditFinalistComponent implements OnInit {
   finalist: any; //Finalist = {firstname: '', lastname: '', company: '', motivation: '', img: ''};
   submitted = false;
@@ -33,6 +37,10 @@ export class EditFinalistComponent implements OnInit {
     t.setSeconds(secs);
     return t.toLocaleDateString("nl-BE");
   }
+  /*
+  Delete the votes from a finalist
+  This is achieved by the finalistId in the vote document.
+   */
   deleteVotes() {
     var doDelete = confirm("Delete votes?");
     if (doDelete) {

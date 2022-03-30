@@ -8,6 +8,10 @@ import {Meta} from "@angular/platform-browser";
   templateUrl: './content-post.component.html',
   styleUrls: ['./content-post.component.css']
 })
+/*
+/content/ID, the specific page for a content-post
+this can be text, a video or images
+ */
 export class ContentPostComponent implements OnInit {
   content: any;
   contents = new Array();
@@ -27,11 +31,9 @@ export class ContentPostComponent implements OnInit {
     const id = this.router.url.split("/")[2];
     if (this.contents.length > 0) {
       this.content = this.contents.find(c => c.id == id);
-      this.addTag();
     } else {
       this.contentService.getContent(id).then(res => {
         this.content = res.data();
-        this.addTag();
       });
     }
   }
@@ -44,13 +46,9 @@ export class ContentPostComponent implements OnInit {
     }
     this.getContentPost();
   }
-  addTag() {
-    if (this.content.img) {
-      this.metaService.updateTag({ property: 'og:image', content: this.content.img });
-      this.metaService.updateTag({ name: 'image', content: this.content.img });
-      this.metaService.updateTag({ property: 'twitter:image', content: this.content.img });
-    }
-  }
+  /*
+  This will be shown if there is a image slider
+   */
   showImg(n: number){
     let i;
     let x = Array.from(document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>);

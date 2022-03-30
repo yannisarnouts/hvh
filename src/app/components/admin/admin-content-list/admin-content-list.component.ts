@@ -6,6 +6,10 @@ import {ContentService} from "../../../services/content.service";
   templateUrl: './admin-content-list.component.html',
   styleUrls: ['./admin-content-list.component.css']
 })
+/*
+This page can be found on /admin/contentList
+It gives an overview of all content posts
+ */
 export class AdminContentListComponent implements OnInit {
   contents = new Array();
 

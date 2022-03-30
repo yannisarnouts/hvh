@@ -9,6 +9,9 @@ import {CmsService} from "../../services/cms.service";
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
+/*
+/content, the page with all content-posts
+ */
 export class ContentComponent implements OnInit {
   contents = new Array();
   contentsSessionStorage = new Array();
@@ -17,6 +20,9 @@ export class ContentComponent implements OnInit {
   constructor(private contentService: ContentService, private cmsService: CmsService) {
   }
 
+  /*
+  First check the session storage, to limit the db requests
+   */
   ngOnInit(): void {
     this.getContentsFromSessionStorage();
     this.getCMSFromSessionStorage();
@@ -40,6 +46,10 @@ export class ContentComponent implements OnInit {
     }
   }
 
+  /*
+  The content posts are retrieved and sorted on date,
+  the most recent post will be shown first
+   */
   async getContents() {
     this.contentService.getContents().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {

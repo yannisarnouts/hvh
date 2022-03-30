@@ -5,6 +5,10 @@ import {Finalist} from "../components/admin/submit-finalist/submit-finalist.comp
 @Injectable({
   providedIn: 'root'
 })
+/*
+Service to create, get and delete finalists
+Also To create and delete votes
+ */
 export class FinalistService {
 
   constructor(private fs: AngularFirestore) { }

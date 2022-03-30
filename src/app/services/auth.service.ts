@@ -5,6 +5,9 @@ import {first} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
+/*
+Service to login and logout as admin user
+ */
 export class AuthService {
   currentUser: any;
 

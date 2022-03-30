@@ -6,6 +6,10 @@ import {CmsService} from "../../../services/cms.service";
   templateUrl: './admin-pages.component.html',
   styleUrls: ['./admin-pages.component.css']
 })
+/*
+/admin/pages
+To make a specific page visible for website visitors.
+ */
 export class AdminPagesComponent implements OnInit {
   cmsData: any;
   submitted = false;

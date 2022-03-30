@@ -7,6 +7,10 @@ import {ContentService} from "../../../services/content.service";
   templateUrl: './edit-content.component.html',
   styleUrls: ['./edit-content.component.css']
 })
+/*
+/admin/editContent/ID
+You can edit a content post here
+ */
 export class EditContentComponent implements OnInit {
   content: Content = {title: '', author: '', topic: '', bannerIntro: '', intro: '', date: '', subcontents: [], img: '', slideshowImages: []};
   subContents = new Array();
@@ -16,6 +20,10 @@ export class EditContentComponent implements OnInit {
   constructor(private contentService: ContentService) {
   }
 
+  /*
+  On init we retrieve the data from a ccontent post
+  To limit the requests we work with session storage.
+   */
   ngOnInit(): void {
     if (sessionStorage.getItem('editContent') !== null) {
       let contentsString = sessionStorage.getItem('editContent');

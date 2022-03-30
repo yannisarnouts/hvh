@@ -1,9 +1,9 @@
 <div class="container pt-3">
   <a href="admin" class="btn btn-warning w-10">Ga terug</a> <br/><br/><br/>
-  <!--<a href="/admin/submitFinalists" class="btn btn-primary">Create Finalist</a>-->
   <a href="/admin/submitFinalists" class="btn btn-primary float-end">Create Finalist</a> <br/><br/><br/>
   <br><br>
   <button class="btn btn-secondary" (click)="exportAsXSLX()">Download as Excel</button>
+  <p style="color: red; font-size: 18px;" class="pt-2">WARNING: Only delete a finalist after you deleted it's votes!!!</p>
   <table class="table table-striped mt-3">
     <thead>
     <tr>
@@ -21,7 +21,6 @@
       <td>{{finalist.company}}</td>
       <td *ngIf="finalist.motivation">{{finalist.motivation.substring(0, 70)}} ...</td>
       <td *ngIf="finalist.votes">{{finalist.nrVotes}}</td>
-      <td><a href="admin/finalisten/{{finalist.id}}" class="btn btn-primary">Meer info</a></td>
       <td><button (click)="editFinalist(finalist.id)" class="btn btn-warning" style="margin-left: 10px">Edit</button></td>
       <td><button class="btn btn-danger" (click)="deleteFinalist(finalist.id)">Delete</button></td>
     </tr>

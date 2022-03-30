@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private cmsService: CmsService){
     const analytics = getAnalytics();
   }
-
+  /*
+  First retrieve from Session storage
+   */
   ngOnInit() {
     this.getCMSFromSessionStorage();
     this.router.events.subscribe(res => {
@@ -29,7 +31,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
+/*
+Check what pages are visible for the visitors. News and Finalist pages can be enabled/disabled
+ */
   getCMSFromSessionStorage() {
     let contentsString = '';
     if (sessionStorage.getItem('pages') !== null) {

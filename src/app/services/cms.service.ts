@@ -4,6 +4,9 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 @Injectable({
   providedIn: 'root'
 })
+/*
+Service for CMS data, this can be for News, Finalists and HOme page
+ */
 export class CmsService {
 
   constructor(private fs: AngularFirestore) { }

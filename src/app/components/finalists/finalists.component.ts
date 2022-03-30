@@ -10,6 +10,9 @@ import {Router} from "@angular/router";
   templateUrl: './finalists.component.html',
   styleUrls: ['./finalists.component.css']
 })
+/*
+/finalisten, the finalists overview page
+ */
 export class FinalistsComponent implements OnInit, AfterViewInit {
   firstname: string = "";
   finalists = new Array();
@@ -20,6 +23,9 @@ export class FinalistsComponent implements OnInit, AfterViewInit {
   constructor(private finalistService: FinalistService, public dialog: MatDialog, private cmsService: CmsService, private router: Router) {
   }
 
+  /*
+  First try to get data from sessionstorage, else from DB
+   */
   ngOnInit(): void {
     this.getCMSFromSessionStorage();
     this.getFinalistsFromSessionStorage();
@@ -63,6 +69,11 @@ export class FinalistsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /*
+  Get the finalists
+  if the URL contains the id of a finalists, automatically open the voting popup
+  eg: finalisten#vote=ID
+   */
   getFinalists() {
     this.finalistService.getFinalists().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {
@@ -78,6 +89,9 @@ export class FinalistsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /*
+  Open the vote for dialog
+   */
   openVoteFor(id: string) {
     const fid = id.split('=')[1];
     console.log(fid);
@@ -88,7 +102,11 @@ export class FinalistsComponent implements OnInit, AfterViewInit {
   shareFinalistURL(fid: string) {
     return window.location.href + '#vote=' + fid;
   }
-
+  /*
+  This passes the data to the VoteDialog class
+  after closed, check if the email doesn't exist already in betwee the votes
+  If not: create the vote
+   */
   openDialog(vote: any): void {
     const dialogRef = this.dialog.open(VoteDialog, {
       width: '750px',
@@ -140,6 +158,9 @@ export class VoteDialog {
   ) {
   }
 
+  /*
+  Disable form if the email is not filled in correctly
+   */
   disableForm() {
     if (this.data.voterEmail && this.data.voterEmail.length > 6) {
       if (!this.data.voterEmail.match(/^.+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.voterEmail.length < 6) {

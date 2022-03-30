@@ -5,6 +5,9 @@ import {Content} from "../components/admin/submit-content/submit-content.compone
 @Injectable({
   providedIn: 'root'
 })
+/*
+Service to create, edit and retrieve content
+ */
 export class ContentService {
   constructor(private fs: AngularFirestore) { }
 

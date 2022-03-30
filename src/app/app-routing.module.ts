@@ -13,7 +13,6 @@ import {ContentCmsComponent} from "./components/admin/content-cms/content-cms.co
 import {HomeCmsComponent} from "./components/admin/home-cms/home-cms.component";
 import {FinalistsComponent} from "./components/finalists/finalists.component";
 import {AdminFinalistsComponent} from "./components/admin/admin-finalists/admin-finalists.component";
-import {AdminFinalistDetailComponent} from "./components/admin/admin-finalist-detail/admin-finalist-detail.component";
 import {AdminContentListComponent} from "./components/admin/admin-content-list/admin-content-list.component";
 import {EditContentComponent} from "./components/admin/edit-content/edit-content.component";
 import {SubmitFinalistComponent} from "./components/admin/submit-finalist/submit-finalist.component";
@@ -24,7 +23,10 @@ import {AdminPagesComponent} from "./components/admin/admin-pages/admin-pages.co
 @Injectable()
 export class LoginActivate implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
-
+/*
+The canActivate checks what type of user can acces specific pages.
+Admin pages can only be accessed by logged in users.
+ */
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -55,7 +57,6 @@ const routes: Routes = [
   {path: 'admin/finalisten', component: AdminFinalistsComponent, canActivate: [LoginActivate]},
   {path: 'admin/editFinalist/:id', component: EditFinalistComponent, canActivate: [LoginActivate]},
   {path: 'admin/submitFinalists', component: SubmitFinalistComponent, canActivate: [LoginActivate]},
-  {path: 'admin/finalisten/:id', component: AdminFinalistDetailComponent, canActivate: [LoginActivate]},
   {path: 'admin/pages', component: AdminPagesComponent, canActivate: [LoginActivate]},
 ];
 

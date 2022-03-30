@@ -4,6 +4,9 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 @Injectable({
   providedIn: 'root'
 })
+/*
+Service to create, geet and delete nominees
+ */
 export class NomineeService {
 
   constructor(private fs: AngularFirestore) {

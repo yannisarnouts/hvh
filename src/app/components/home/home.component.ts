@@ -20,6 +20,9 @@ export interface DialogData {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+/*
+The home page
+ */
 export class HomeComponent implements OnInit {
   nominees: any[] = new Array();
   firstname: string = "";
@@ -37,6 +40,9 @@ export class HomeComponent implements OnInit {
   constructor(private nomineeService: NomineeService, public dialog: MatDialog, private cmsService: CmsService, public sanitizer: DomSanitizer) {
   }
 
+  /*
+  First retrieve the CMS data from session storage, else from the DB
+   */
   ngOnInit(): void {
     this.getCMSFromSessionStorage();
     this.showIframe = navigator.userAgent.indexOf("Firefox") == -1;
@@ -62,6 +68,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /*
+  Opendialog opens a popup, this popup is to nominate your helpdesk hero
+  afterClosed checks if the voter already voted, you can't vote multiple times with the same email
+  If that's not the case it creates a vote.
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(NominateDialog, {
       width: '750px',
@@ -109,6 +120,9 @@ export class NominateDialog {
     console.log(this.data);
   }
 
+  /*
+  The form can only be sumbitted if certain fields are filled in correctly
+   */
   disableForm() {
     if (this.data.firstname.length > 1 && this.data.lastname.length > 1 && this.data.company.length > 1 && this.data.email.length > 1 && this.data.phone.length > 1 && this.data.motivation.length > 1) {
       if (!this.data.email.match(/^.+@[a-z]+\.?[a-z]*\.[a-z]{2,}$/g) || this.data.email.length < 6) {

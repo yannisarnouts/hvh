@@ -24,7 +24,6 @@ import { HomeCmsComponent } from './components/admin/home-cms/home-cms.component
 import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 import {FinalistsComponent, VoteDialog} from './components/finalists/finalists.component';
 import { AdminFinalistsComponent } from './components/admin/admin-finalists/admin-finalists.component';
-import { AdminFinalistDetailComponent } from './components/admin/admin-finalist-detail/admin-finalist-detail.component';
 import { AdminContentListComponent } from './components/admin/admin-content-list/admin-content-list.component';
 import { EditContentComponent } from './components/admin/edit-content/edit-content.component';
 import { SubmitFinalistComponent } from './components/admin/submit-finalist/submit-finalist.component';
@@ -51,7 +50,6 @@ import { AdminPagesComponent } from './components/admin/admin-pages/admin-pages.
     HomeCmsComponent,
     FinalistsComponent,
     AdminFinalistsComponent,
-    AdminFinalistDetailComponent,
     AdminContentListComponent,
     EditContentComponent,
     SubmitFinalistComponent,

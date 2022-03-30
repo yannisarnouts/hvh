@@ -6,6 +6,10 @@ import {CmsService} from "../../../services/cms.service";
   templateUrl: './home-cms.component.html',
   styleUrls: ['./home-cms.component.css']
 })
+/*
+/admin/homeCMS
+This is CMS page, here we can edit all content on the homepage
+ */
 export class HomeCmsComponent implements OnInit {
   submitted = false;
   cmsData: any;

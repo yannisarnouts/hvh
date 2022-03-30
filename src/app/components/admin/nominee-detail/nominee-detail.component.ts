@@ -6,6 +6,10 @@ import {Router} from "@angular/router";
   templateUrl: './nominee-detail.component.html',
   styleUrls: ['./nominee-detail.component.css']
 })
+/*
+/admin/nominees/email
+Detail page for a specific nominee
+ */
 export class NomineeDetailComponent implements OnInit {
   nominees = new Array();
   nominee: any;
@@ -31,6 +35,9 @@ export class NomineeDetailComponent implements OnInit {
     }
     this.getNominee();
   }
+  /*
+  Gives an overview of all other times this nominee is nominated
+   */
   getAllNominators() {
     this.allNominators = this.nominees.filter(n => n.lastname.toLowerCase().includes(this.nominee.lastname.toLowerCase()));
     this.allNominators = this.allNominators.filter(n => n.firstname.toLowerCase().includes(this.nominee.firstname.toLowerCase()));

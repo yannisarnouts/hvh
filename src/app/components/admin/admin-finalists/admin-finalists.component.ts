@@ -7,6 +7,11 @@ import {FinalistService} from "../../../services/finalist.service";
   templateUrl: './admin-finalists.component.html',
   styleUrls: ['./admin-finalists.component.css']
 })
+/*
+/admin/finalisten
+Overview of all finalists
+You can also navigate here to edit or delete the finalists
+ */
 export class AdminFinalistsComponent implements OnInit {
   finalists = new Array();
   votes = new Array();
@@ -36,6 +41,9 @@ export class AdminFinalistsComponent implements OnInit {
     location.replace("/admin/editFinalist/" + id);
     // href="/admin/editContent/{{content.id}}"
   }
+  /*
+  Retreive all votes
+   */
   getVotes() {
     this.finalistService.getFinalistVotes().subscribe((querySnapshot) => {
       querySnapshot.forEach(doc => {
@@ -47,7 +55,9 @@ export class AdminFinalistsComponent implements OnInit {
       sessionStorage.setItem('votes', JSON.stringify(this.votes));
     });
   }
-
+/*
+Combine the votes to a finalist, this is done by the finalistId in the vote document.
+ */
   combineVotesToFinalist() {
     for (let i = 0; i < this.finalists.length; i++) {
       this.finalists[i].votes = [];
