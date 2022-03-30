@@ -63,7 +63,6 @@ export class AdminFinalistsComponent implements OnInit {
     });
     sessionStorage.setItem('finalists', JSON.stringify(this.finalists));
   }
-
   deleteFinalist(id: string) {
     var doDelete = confirm("Delete finalist?");
     if (doDelete) {

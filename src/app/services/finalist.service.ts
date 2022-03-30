@@ -36,6 +36,17 @@ export class FinalistService {
   deleteFinalist(id: string) {
     return this.fs.firestore.doc('finalists/' + id).delete();
   }
+  deleteVotes(finalistId: string) {
+    console.log(finalistId);
+    return this.fs.firestore.collection('finalistVotes').get().then(res => {
+      res.forEach(element => {
+        let el = element.data();
+        if (el['finalistId'] === finalistId) {
+          element.ref.delete();
+        }
+      })
+    })
+  }
   deleteVote(id: string) {
     return this.fs.firestore.doc('finalistVotes/' + id).delete();
   }

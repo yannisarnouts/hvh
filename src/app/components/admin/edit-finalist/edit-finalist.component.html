@@ -32,14 +32,13 @@
   </form>
   <br/>
   <h1>{{finalist.votes.length}} stemmen ontvangen</h1>
-  <span>Stemmen gekregen van:</span>
+  <button (click)="deleteVotes()" class="btn btn-danger float-end">Delete Votes</button> <br/><br/><br/>
   <table class="table table-striped mt-3">
     <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">E-mail Publisher</th>
       <th scope="col">Date</th>
-      <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -47,7 +46,6 @@
       <th scope="row">{{i + 1}}</th>
       <td>{{fv.voterEmail}}</td>
       <td>{{toDateTime(fv.date.seconds)}}</td>
-      <td><button class="btn btn-danger" (click)="deleteVote(fv.id)">Delete</button></td>
     </tr>
     </tbody>
   </table>
